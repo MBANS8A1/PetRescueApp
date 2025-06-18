@@ -1,5 +1,6 @@
 package com.example.petrescueapp.components
 
+import android.graphics.Color
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -47,11 +49,30 @@ fun PetInfoItem() {
                 Text(
                     text = buildString {
                         append("Adult")
-                        append("|")
+                        append(" | ")
                         append("Domestic Short Hair")
-                    }
-                )
+                    },
+                    color=MaterialTheme.colorScheme.onSurface,
+                    style = MaterialTheme.typography.bodySmall
 
+                )
+                Spacer(modifier=Modifier.height(8.dp))
+                Row {
+                    Icon(painter = painterResource(id=R.drawable.ic_location),
+                        contentDescription = null,
+                        modifier=Modifier.size(16.dp,16.dp),
+                        tint = androidx.compose.ui.graphics.Color.Red
+                        )
+                    Text(text="Toronto US", modifier = Modifier.padding(
+                        start=8.dp,
+                        top=0.dp,
+                        end=12.dp,
+                        bottom=0.dp
+                    )
+                        ,color = MaterialTheme.colorScheme.onSurface,
+                        style= MaterialTheme.typography.bodySmall
+                    )
+                }
             }
         }
     }
