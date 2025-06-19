@@ -35,7 +35,7 @@ import com.example.petrescueapp.R
 fun PetInfoItem() {
     Row(modifier = Modifier
         .fillMaxWidth()
-        .padding(16.dp),
+        .padding(start = 16.dp,top=60.dp, end =16.dp, bottom =16.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ){
         Row{
