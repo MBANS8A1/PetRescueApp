@@ -49,7 +49,7 @@ fun PetInfoItem() {
                 Text("Pogo",
                     color = MaterialTheme.colorScheme.onSurface,
                     fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.headlineSmall
+                    style = MaterialTheme.typography.bodyMedium
                 )
                 Spacer(modifier=Modifier.height(8.dp))
                 Text(
@@ -82,7 +82,12 @@ fun PetInfoItem() {
             }
         }
         Column {
-
+            GenderTag(gender="Male", modifier=Modifier)
+            Text(
+                text = "Adoptable",
+                style=MaterialTheme.typography.bodySmall,
+                color =  MaterialTheme.colorScheme.onSurface
+            )
         }
     }
 }
