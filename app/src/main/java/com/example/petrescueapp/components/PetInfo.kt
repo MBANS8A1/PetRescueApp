@@ -3,6 +3,7 @@ package com.example.petrescueapp.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -34,7 +35,8 @@ import com.example.petrescueapp.R
 fun PetInfoItem() {
     Row(modifier = Modifier
         .fillMaxWidth()
-        .padding(16.dp)
+        .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
     ){
         Row{
             Image(modifier = Modifier.size(80.dp,80.dp)
@@ -81,7 +83,10 @@ fun PetInfoItem() {
                 }
             }
         }
-        Column {
+        Column(
+            modifier = Modifier.height(80.dp),
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
             GenderTag(gender="Male", modifier=Modifier)
             Text(
                 text = "Adoptable",
