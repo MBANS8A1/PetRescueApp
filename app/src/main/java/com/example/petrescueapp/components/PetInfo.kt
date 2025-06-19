@@ -19,6 +19,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -35,7 +36,7 @@ import com.example.petrescueapp.R
 fun PetInfoItem() {
     Row(modifier = Modifier
         .fillMaxWidth()
-        .padding(start = 16.dp,top=60.dp, end =16.dp, bottom =16.dp),
+        .padding(start = 16.dp,top=40.dp, end =16.dp, bottom =16.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ){
         Row{
@@ -44,10 +45,12 @@ fun PetInfoItem() {
                 ,
                 painter= painterResource(R.drawable.blue_dog),
                 contentDescription="",
-                contentScale = ContentScale.Crop)
+                contentScale = ContentScale.Crop,
+                alignment = Alignment.CenterStart
+            )
             Spacer(modifier=Modifier.width(16.dp))
 
-            Column {
+            Column(modifier = Modifier.align(Alignment.CenterVertically)) {
                 Text("Pogo",
                     color = MaterialTheme.colorScheme.onSurface,
                     fontWeight = FontWeight.Bold,
@@ -65,7 +68,9 @@ fun PetInfoItem() {
 
                 )
                 Spacer(modifier=Modifier.height(8.dp))
-                Row {
+                Row(
+                    verticalAlignment = Alignment.Bottom
+                ) {
                     Icon(painter = painterResource(id=R.drawable.ic_location),
                         contentDescription = null,
                         modifier=Modifier.size(16.dp,16.dp),
