@@ -3,6 +3,7 @@ package com.example.petrescueapp.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,6 +16,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -34,72 +37,83 @@ import com.example.petrescueapp.R
 
 @Composable
 fun PetInfoItem() {
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .padding(start = 16.dp,top=40.dp, end =16.dp, bottom =16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ){
-        Row{
-            Image(modifier = Modifier.size(80.dp,80.dp)
-                .clip((RoundedCornerShape(16.dp)))
-                ,
-                painter= painterResource(R.drawable.blue_dog),
-                contentDescription="",
-                contentScale = ContentScale.Crop,
-                alignment = Alignment.CenterStart
-            )
-            Spacer(modifier=Modifier.width(16.dp))
+   Card(modifier=Modifier
+       .fillMaxWidth()
+       .padding(8.dp)
+       .clip(RoundedCornerShape(16.dp))
+       .clickable(onClick = {}),
+        elevation =CardDefaults.cardElevation(defaultElevation = 2.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        )
+   ) {
+       Row(modifier = Modifier
+           .fillMaxWidth()
+           .padding(start = 16.dp,top=40.dp, end =16.dp, bottom =16.dp),
+           horizontalArrangement = Arrangement.SpaceBetween
+       ){
+           Row{
+               Image(modifier = Modifier.size(80.dp,80.dp)
+                   .clip((RoundedCornerShape(16.dp)))
+                   ,
+                   painter= painterResource(R.drawable.blue_dog),
+                   contentDescription="",
+                   contentScale = ContentScale.Crop,
+                   alignment = Alignment.CenterStart
+               )
+               Spacer(modifier=Modifier.width(16.dp))
 
-            Column(modifier = Modifier.align(Alignment.CenterVertically)) {
-                Text("Pogo",
-                    color = MaterialTheme.colorScheme.onSurface,
-                    fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.bodyMedium
-                )
-                Spacer(modifier=Modifier.height(8.dp))
-                Text(
-                    text = buildString {
-                        append("Adult")
-                        append(" | ")
-                        append("Domestic Short Hair")
-                    },
-                    color=MaterialTheme.colorScheme.onSurface,
-                    style = MaterialTheme.typography.bodySmall
+               Column(modifier = Modifier.align(Alignment.CenterVertically)) {
+                   Text("Pogo",
+                       color = MaterialTheme.colorScheme.onSurface,
+                       fontWeight = FontWeight.Bold,
+                       style = MaterialTheme.typography.bodyMedium
+                   )
+                   Spacer(modifier=Modifier.height(8.dp))
+                   Text(
+                       text = buildString {
+                           append("Adult")
+                           append(" | ")
+                           append("Domestic Short Hair")
+                       },
+                       color=MaterialTheme.colorScheme.onSurface,
+                       style = MaterialTheme.typography.bodySmall
 
-                )
-                Spacer(modifier=Modifier.height(8.dp))
-                Row(
-                    verticalAlignment = Alignment.Bottom
-                ) {
-                    Icon(painter = painterResource(id=R.drawable.ic_location),
-                        contentDescription = null,
-                        modifier=Modifier.size(16.dp,16.dp),
-                        tint = androidx.compose.ui.graphics.Color.Red
-                        )
-                    Text(text="Toronto US", modifier = Modifier.padding(
-                        start=8.dp,
-                        top=0.dp,
-                        end=12.dp,
-                        bottom=0.dp
-                    )
-                        ,color = MaterialTheme.colorScheme.onSurface,
-                        style= MaterialTheme.typography.bodySmall
-                    )
-                }
-            }
-        }
-        Column(
-            modifier = Modifier.height(80.dp),
-            verticalArrangement = Arrangement.SpaceBetween
-        ) {
-            GenderTag(gender="Male", modifier=Modifier)
-            Text(
-                text = "Adoptable",
-                style=MaterialTheme.typography.bodySmall,
-                color =  MaterialTheme.colorScheme.onSurface
-            )
-        }
-    }
+                   )
+                   Spacer(modifier=Modifier.height(8.dp))
+                   Row(
+                       verticalAlignment = Alignment.Bottom
+                   ) {
+                       Icon(painter = painterResource(id=R.drawable.ic_location),
+                           contentDescription = null,
+                           modifier=Modifier.size(16.dp,16.dp),
+                           tint = androidx.compose.ui.graphics.Color.Red
+                       )
+                       Text(text="Toronto US", modifier = Modifier.padding(
+                           start=8.dp,
+                           top=0.dp,
+                           end=12.dp,
+                           bottom=0.dp
+                       )
+                           ,color = MaterialTheme.colorScheme.onSurface,
+                           style= MaterialTheme.typography.bodySmall
+                       )
+                   }
+               }
+           }
+           Column(
+               modifier = Modifier.height(80.dp),
+               verticalArrangement = Arrangement.SpaceBetween
+           ) {
+               GenderTag(gender="Male", modifier=Modifier)
+               Text(
+                   text = "Adoptable",
+                   style=MaterialTheme.typography.bodySmall,
+                   color =  MaterialTheme.colorScheme.onSurface
+               )
+           }
+       }
+   }
 }
 
 @Composable
