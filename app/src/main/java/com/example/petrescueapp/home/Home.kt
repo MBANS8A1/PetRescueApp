@@ -6,5 +6,4 @@ import com.example.petrescueapp.components.PetInfoItem
 
 @Composable
 fun Home() {
-    PetInfoItem()
 }

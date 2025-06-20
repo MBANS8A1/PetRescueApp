@@ -34,14 +34,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.room.util.copy
 import com.example.petrescueapp.R
+import com.example.petrescueapp.data.DummyPetDataSource
+import com.example.petrescueapp.data.model.Pet
 
 @Composable
-fun PetInfoItem() {
+fun PetInfoItem(
+    pet: Pet,
+    onPetItemClick: (Pet) -> Unit
+) {
    Card(modifier=Modifier
        .fillMaxWidth()
        .padding(8.dp)
        .clip(RoundedCornerShape(16.dp))
-       .clickable(onClick = {}),
+       .clickable(onClick = {onPetItemClick(pet)}),
         elevation =CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
@@ -56,7 +61,7 @@ fun PetInfoItem() {
                Image(modifier = Modifier.size(80.dp,80.dp)
                    .clip((RoundedCornerShape(16.dp)))
                    ,
-                   painter= painterResource(R.drawable.blue_dog),
+                   painter= painterResource(id=pet.image),
                    contentDescription="",
                    contentScale = ContentScale.Crop,
                    alignment = Alignment.CenterStart
@@ -64,7 +69,7 @@ fun PetInfoItem() {
                Spacer(modifier=Modifier.width(16.dp))
 
                Column(modifier = Modifier.align(Alignment.CenterVertically)) {
-                   Text("Pogo",
+                   Text(text=pet.name,
                        color = MaterialTheme.colorScheme.onSurface,
                        fontWeight = FontWeight.Bold,
                        style = MaterialTheme.typography.bodyMedium
@@ -72,9 +77,9 @@ fun PetInfoItem() {
                    Spacer(modifier=Modifier.height(8.dp))
                    Text(
                        text = buildString {
-                           append("Adult")
+                           append(pet.age)
                            append(" | ")
-                           append("Domestic Short Hair")
+                           append(pet.breed)
                        },
                        color=MaterialTheme.colorScheme.onSurface,
                        style = MaterialTheme.typography.bodySmall
@@ -89,7 +94,7 @@ fun PetInfoItem() {
                            modifier=Modifier.size(16.dp,16.dp),
                            tint = androidx.compose.ui.graphics.Color.Red
                        )
-                       Text(text="Toronto US", modifier = Modifier.padding(
+                       Text(text=pet.location, modifier = Modifier.padding(
                            start=8.dp,
                            top=0.dp,
                            end=12.dp,
@@ -105,7 +110,7 @@ fun PetInfoItem() {
                modifier = Modifier.height(80.dp),
                verticalArrangement = Arrangement.SpaceBetween
            ) {
-               GenderTag(gender="Male", modifier=Modifier)
+               GenderTag(gender=pet.gender, modifier=Modifier)
                Text(
                    text = "Adoptable",
                    style=MaterialTheme.typography.bodySmall,
@@ -144,5 +149,8 @@ fun GenderTag(gender:String,modifier:Modifier){
 @Preview(showBackground = true)
 @Composable
 private fun PrevPetInfo() {
-    PetInfoItem()
+    //using dummy data source
+    //get a random pet icon
+    val petItem = DummyPetDataSource.dogList.random()
+    PetInfoItem(petItem){}
 }
