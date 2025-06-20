@@ -54,7 +54,7 @@ fun PetInfoItem(
    ) {
        Row(modifier = Modifier
            .fillMaxWidth()
-           .padding(start = 16.dp,top=40.dp, end =16.dp, bottom =16.dp),
+           .padding(16.dp),
            horizontalArrangement = Arrangement.SpaceBetween
        ){
            Row{
