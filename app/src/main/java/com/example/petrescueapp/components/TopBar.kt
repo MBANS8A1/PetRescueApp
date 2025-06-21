@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.example.petrescueapp.R
 
 @Composable
-fun TopBar() {
+fun TopBar(onSwitchToggle: () -> Unit) {
     Row(modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
     ){
@@ -36,6 +36,16 @@ fun TopBar() {
                 style= MaterialTheme.typography.bodySmall,
                 color=MaterialTheme.colorScheme.onSurface
             )
+        }
+
+        Row(modifier = Modifier
+            .fillMaxWidth().padding(top=24.dp,
+                end= 36.dp)) {
+
+            PetSwitch {
+                onSwitchToggle.invoke()
+            }
+
         }
 
     }
@@ -55,12 +65,12 @@ fun PetSwitch(onSwitchToggle:() -> Unit) {
         .clickable(
             onClick = {onSwitchToggle.invoke()}
         ),
-        tint = MaterialTheme.colorScheme.onSurface
+        tint = MaterialTheme.colorScheme.onSurface)
 }
 
 @Preview
 @Composable
 private fun PrevTopBar() {
-    TopBar()
+    TopBar(){}
     
 }

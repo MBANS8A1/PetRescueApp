@@ -15,14 +15,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.petrescueapp.components.PetInfoItem
+import com.example.petrescueapp.components.TopBar
 import com.example.petrescueapp.data.DummyPetDataSource
 
 @Composable
-fun Home() {
+fun Home(
+    onSwitchClick:() ->Unit,
+    onPetClick:(Int)-> Unit    //index of the Pet
+) {
     val petList = DummyPetDataSource.dogList
     Scaffold(
         topBar = {
+            TopBar{
 
+            }
         }
     ) {
         paddingValues: PaddingValues ->
