@@ -1,8 +1,11 @@
 package com.example.petrescueapp.detail
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,13 +22,17 @@ import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.petrescueapp.data.DummyPetDataSource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailScreen(onNavigate:()->Unit) {
+fun DetailScreen(index:Int,onNavigate:()->Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -52,8 +59,17 @@ fun DetailScreen(onNavigate:()->Unit) {
             )
         }
     ) {padding ->
+        //use dummy data source for now
+        val pet = DummyPetDataSource.dogList[index]
         LazyColumn(contentPadding = padding) {
-
+            item {
+                Image(painter = painterResource(id=pet.image),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxWidth()
+                        .height(346.dp),
+                    alignment = Alignment.CenterStart,
+                    contentScale = ContentScale.Crop)
+            }
         }
     }
 }
@@ -61,7 +77,7 @@ fun DetailScreen(onNavigate:()->Unit) {
 @Preview(showSystemUi = true)
 @Composable
 private fun PrevDetailScreen() {
-    DetailScreen {  }
+    DetailScreen(index=0) {  }
 }
 
 
