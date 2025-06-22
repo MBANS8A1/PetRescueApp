@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
@@ -17,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.example.petrescueapp.components.PetInfoItem
 import com.example.petrescueapp.components.TopBar
 import com.example.petrescueapp.data.DummyPetDataSource
+import kotlinx.serialization.serializerOrNull
 
 @Composable
 fun Home(
@@ -27,14 +29,15 @@ fun Home(
     Scaffold(
         topBar = {
             TopBar{
-
+                onSwitchClick()
             }
         }
     ) {
         paddingValues: PaddingValues ->
         LazyColumn(contentPadding = paddingValues) {
-            items(petList){pet->
+            itemsIndexed(petList){index,pet->
                 PetInfoItem(pet) {
+                    onPetClick(index)
 
                 }
             }
@@ -46,5 +49,5 @@ fun Home(
 @Preview
 @Composable
 private fun PrevItem() {
-    Home()
+    Home(onSwitchClick = {},){}
 }
