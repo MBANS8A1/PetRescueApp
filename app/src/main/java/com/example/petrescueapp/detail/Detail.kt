@@ -18,16 +18,20 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -109,8 +113,31 @@ fun PetInfo(pet:Pet){
 
 @Composable
 fun InfoCard(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    primaryText: String,
+    secondaryText: String
 ) {
+    Surface(shape=MaterialTheme.shapes.medium,
+        modifier = Modifier) {
+        Column(modifier = Modifier.padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center) {
+            //Material 3 way of making opacity changes below
+            CompositionLocalProvider(
+                LocalContentColor provides MaterialTheme.colorScheme.onSurface
+                    .copy(alpha = 0.4f)
+            ) {
+                Text(text = secondaryText)
+            }
+
+            Text(text=primaryText,
+                style=MaterialTheme.typography.labelSmall,
+                fontWeight = FontWeight.Medium,
+                textAlign = TextAlign.Center)
+            Spacer(modifier = Modifier.size(4.dp))
+        }
+
+    }
     
 }
 
@@ -149,6 +176,13 @@ fun Title(title:String) {
 @Composable
 private fun PrevDetailScreen() {
     DetailScreen(index=0) {  }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun PrevInfoCard() {
+    InfoCard(primaryText = "Adult", secondaryText = "Age")
+    
 }
 
 
