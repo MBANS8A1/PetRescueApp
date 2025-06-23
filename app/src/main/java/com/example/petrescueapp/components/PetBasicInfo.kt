@@ -22,6 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.petrescueapp.R
 
+
+
+
 @Composable
 fun PetBasicInfo(
     name:String,
@@ -58,8 +61,22 @@ fun PetBasicInfo(
                     color = MaterialTheme.colorScheme.onSurface,
                     style= MaterialTheme.typography.bodySmall
                 )
-            }
 
+            }
+            Spacer(modifier = Modifier.height(12.dp))
+            Text(text="Adoptable", modifier = Modifier
+                .padding(
+                start=4.dp,top=0.dp,end=12.dp,bottom=0.dp
+            ),
+                color = MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.labelSmall
+            )
+
+        }
+        Column(modifier = Modifier.height(80.dp),
+            verticalArrangement = Arrangement.SpaceBetween,
+            horizontalAlignment = Alignment.CenterHorizontally) {
+            GenderTag(gender="Male", modifier = Modifier)
         }
 
     }
