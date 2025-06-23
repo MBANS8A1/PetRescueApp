@@ -2,6 +2,7 @@ package com.example.petrescueapp.detail
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -97,10 +98,20 @@ fun PetInfo(pet:Pet){
         Spacer(modifier = Modifier.height(24.dp))
         Title(title = "Pet Info")
         Spacer(modifier = Modifier.height(16.dp))
-        Row {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceAround
+        ) {
 
         }
     }
+}
+
+@Composable
+fun InfoCard(
+    modifier: Modifier = Modifier
+) {
+    
 }
 
 
@@ -111,7 +122,8 @@ fun MyStoryItem(pet: Pet) {
         Title(title="My Story")
         Spacer(modifier = Modifier.height(16.dp))
         Text(text= pet.description, modifier = Modifier
-            .fillMaxWidth().padding(8.dp),
+            .fillMaxWidth()
+            .padding(8.dp),
             color = MaterialTheme.colorScheme.onSurface,
             style=  MaterialTheme.typography.bodySmall,
             textAlign = TextAlign.Start)
