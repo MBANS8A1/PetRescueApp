@@ -80,6 +80,7 @@ fun DetailScreen(index:Int,onNavigate:()->Unit) {
                 PetBasicInfo(name=pet.name,gender=pet.gender, location = pet.location)
             }
             item{
+                MyStoryItem(pet = pet)
 
             }
         }
@@ -91,6 +92,12 @@ fun MyStoryItem(pet: Pet) {
     Column {
         Spacer(modifier = Modifier.height(24.dp))
         Title(title="My Story")
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(text= pet.description, modifier = Modifier
+            .fillMaxWidth().padding(8.dp),
+            color = MaterialTheme.colorScheme.onSurface,
+            style=  MaterialTheme.typography.bodySmall,
+            textAlign = TextAlign.Start)
     }
 }
 
@@ -100,8 +107,7 @@ fun Title(title:String) {
         text=title,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 16.dp)
-
+            .padding(start = 7.dp)
         ,
         color = MaterialTheme.colorScheme.onSurface,
         style = MaterialTheme.typography.titleSmall,
