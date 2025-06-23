@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -83,9 +84,25 @@ fun DetailScreen(index:Int,onNavigate:()->Unit) {
                 MyStoryItem(pet = pet)
 
             }
+            item{
+
+            }
         }
     }
 }
+
+@Composable
+fun PetInfo(pet:Pet){
+    Column {
+        Spacer(modifier = Modifier.height(24.dp))
+        Title(title = "Pet Info")
+        Spacer(modifier = Modifier.height(16.dp))
+        Row {
+
+        }
+    }
+}
+
 
 @Composable
 fun MyStoryItem(pet: Pet) {
