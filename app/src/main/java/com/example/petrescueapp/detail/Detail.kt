@@ -28,6 +28,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.petrescueapp.components.PetBasicInfo
 import com.example.petrescueapp.data.DummyPetDataSource
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -69,6 +70,8 @@ fun DetailScreen(index:Int,onNavigate:()->Unit) {
                         .height(346.dp),
                     alignment = Alignment.CenterStart,
                     contentScale = ContentScale.Crop)
+                Spacer(modifier = Modifier.height(16.dp))
+                PetBasicInfo(name=pet.name,gender=pet.gender, location = pet.location)
             }
         }
     }

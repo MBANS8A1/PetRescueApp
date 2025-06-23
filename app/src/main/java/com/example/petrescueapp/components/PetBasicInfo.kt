@@ -73,10 +73,14 @@ fun PetBasicInfo(
             )
 
         }
-        Column(modifier = Modifier.height(80.dp),
+        Column(modifier = Modifier.height(112.dp),
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally) {
             GenderTag(gender="Male", modifier = Modifier)
+            //Hardcode type of pet for now below
+            Text(text="Dog",
+                color=MaterialTheme.colorScheme.onSurface,
+                style=MaterialTheme.typography.labelSmall)
         }
 
     }
