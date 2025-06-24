@@ -38,6 +38,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.petrescueapp.components.OwnerCardInfo
 import com.example.petrescueapp.components.PetBasicInfo
 import com.example.petrescueapp.data.DummyPetDataSource
 import com.example.petrescueapp.data.model.Pet
@@ -93,7 +94,7 @@ fun DetailScreen(index:Int,onNavigate:()->Unit) {
                 PetInfo(pet = pet)
             }
             item{ //owner information
-
+                OwnerCardInfo(owner = pet.owner)
             }
         }
     }
