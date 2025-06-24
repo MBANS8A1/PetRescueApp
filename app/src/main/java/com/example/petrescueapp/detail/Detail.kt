@@ -84,12 +84,15 @@ fun DetailScreen(index:Int,onNavigate:()->Unit) {
                     contentScale = ContentScale.Crop)
                 Spacer(modifier = Modifier.height(16.dp))
                 PetBasicInfo(name=pet.name,gender=pet.gender, location = pet.location)
-            }
+            } //image and basic pet info
             item{
                 MyStoryItem(pet = pet)
 
+            } //pet story and title
+            item{ //pet information via info cards
+                PetInfo(pet = pet)
             }
-            item{
+            item{ //owner information
 
             }
         }
@@ -106,6 +109,19 @@ fun PetInfo(pet:Pet){
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceAround
         ) {
+
+            InfoCard(primaryText =pet.age ,
+                secondaryText ="Age",
+                modifier = Modifier.weight(weight = 1f).padding(4.dp)
+            )
+            InfoCard(primaryText =pet.color,
+                secondaryText ="Colour",
+                modifier = Modifier.weight(weight = 1f).padding(4.dp)
+                )
+            InfoCard(primaryText =pet.breed,
+                secondaryText ="Breed",
+                modifier = Modifier.weight(weight = 1f).padding(4.dp)
+                )
 
         }
     }
@@ -181,8 +197,8 @@ private fun PrevDetailScreen() {
 @Preview(showBackground = true)
 @Composable
 private fun PrevInfoCard() {
-    InfoCard(primaryText = "Adult", secondaryText = "Age")
-    
+    val pet = DummyPetDataSource.dogList[0]
+    PetInfo(pet=pet)
 }
 
 
