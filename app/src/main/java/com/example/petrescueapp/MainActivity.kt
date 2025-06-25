@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.petrescueapp.detail.DetailScreen
 import com.example.petrescueapp.home.Home
 import com.example.petrescueapp.ui.theme.PetRescueAppTheme
 
@@ -25,9 +26,7 @@ class MainActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(),
                     color= MaterialTheme.colorScheme.background
                     ){
-                    Home(onSwitchClick = {}){
-
-                    }
+                    DetailScreen(index = 0) { }
                 }
             }
         }

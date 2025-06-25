@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
@@ -96,8 +97,25 @@ fun DetailScreen(index:Int,onNavigate:()->Unit) {
             item{ //owner information
                 OwnerCardInfo(owner = pet.owner)
             }
+            item{
+                PetButton {
+
+                }
+            }
         }
     }
+}
+
+@Composable
+fun PetButton(onClick: () -> Unit) {
+    Spacer(modifier = Modifier.height(36.dp))
+    Button(onClick = onClick,
+        modifier = Modifier.fillMaxWidth()
+            .padding(16.dp)) {
+        Text(text= "Adopt Me")
+    }
+    Spacer(modifier = Modifier.height(24.dp))
+
 }
 
 @Composable
@@ -113,15 +131,21 @@ fun PetInfo(pet:Pet){
 
             InfoCard(primaryText =pet.age ,
                 secondaryText ="Age",
-                modifier = Modifier.weight(weight = 1f).padding(4.dp)
+                modifier = Modifier
+                    .weight(weight = 1f)
+                    .padding(4.dp)
             )
             InfoCard(primaryText =pet.color,
                 secondaryText ="Colour",
-                modifier = Modifier.weight(weight = 1f).padding(4.dp)
+                modifier = Modifier
+                    .weight(weight = 1f)
+                    .padding(4.dp)
                 )
             InfoCard(primaryText =pet.breed,
                 secondaryText ="Breed",
-                modifier = Modifier.weight(weight = 1f).padding(4.dp)
+                modifier = Modifier
+                    .weight(weight = 1f)
+                    .padding(4.dp)
                 )
 
         }
