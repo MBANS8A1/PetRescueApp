@@ -28,23 +28,34 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            var isDarkTheme by remember{
+                mutableStateOf(false)
+            }
             var currentScreen by remember{
                 mutableStateOf(Screen.Home)
             }
             var selectedIndex by remember{
                 mutableIntStateOf(-1)
             }
-            PetRescueAppTheme {
+            PetRescueAppTheme(
+                darkTheme = isDarkTheme
+            ) {
                 Surface(modifier = Modifier.fillMaxSize(),
                     color= MaterialTheme.colorScheme.background
                     ){
                     when(currentScreen){
                         Screen.Home ->{
-                            Home(onSwitchClick = ,
+                            Home(onSwitchClick = { isDarkTheme = !isDarkTheme
+                            },
                                 onPetClick ={ index->
                                     currentScreen = Screen.Detail
                                     selectedIndex = index
                                 } )
+                        }
+                        Screen.Detail->{
+                            DetailScreen(index = selectedIndex) {
+                                currentScreen = Screen.Home
+                            }
                         }
 
                     }
