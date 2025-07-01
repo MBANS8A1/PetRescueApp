@@ -1,4 +1,4 @@
-package com.example.petrescueapp.presentation.theme
+package com.example.petrescueapp.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

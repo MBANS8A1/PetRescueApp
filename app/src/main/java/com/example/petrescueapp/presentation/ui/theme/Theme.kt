@@ -1,4 +1,4 @@
-package com.example.petrescueapp.presentation.theme
+package com.example.petrescueapp.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.petrescueapp.presentation.detail.DetailScreen
 import com.example.petrescueapp.presentation.home.Home
-import com.example.petrescueapp.presentation.theme.PetRescueAppTheme
+import com.example.petrescueapp.presentation.ui.theme.PetRescueAppTheme
 
 
 class MainActivity : ComponentActivity() {
