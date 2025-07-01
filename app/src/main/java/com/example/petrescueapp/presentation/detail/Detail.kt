@@ -1,4 +1,4 @@
-package com.example.petrescueapp.detail
+package com.example.petrescueapp.presentation.detail
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -31,11 +31,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.petrescueapp.components.InfoCard
-import com.example.petrescueapp.components.OwnerCardInfo
-import com.example.petrescueapp.components.PetInfoItem
-import com.example.petrescueapp.data.DummyPetDataSource
-import com.example.petrescueapp.model.Pet
+import com.example.petrescueapp.presentation.components.InfoCard
+import com.example.petrescueapp.presentation.components.OwnerCardInfo
+import com.example.petrescueapp.presentation.components.PetInfoItem
+import com.example.petrescueapp.presentation.data.DummyPetDataSource
+import com.example.petrescueapp.presentation.model.Pet
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

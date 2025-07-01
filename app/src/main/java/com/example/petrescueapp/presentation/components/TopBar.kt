@@ -1,4 +1,4 @@
-package com.example.petrescueapp.components
+package com.example.petrescueapp.presentation.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme

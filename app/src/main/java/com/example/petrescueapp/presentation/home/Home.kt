@@ -1,4 +1,4 @@
-package com.example.petrescueapp.home
+package com.example.petrescueapp.presentation.home
 
 
 import androidx.compose.foundation.layout.PaddingValues
@@ -7,9 +7,9 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.petrescueapp.components.PetItemCard
-import com.example.petrescueapp.components.TopBar
-import com.example.petrescueapp.data.DummyPetDataSource
+import com.example.petrescueapp.presentation.components.PetItemCard
+import com.example.petrescueapp.presentation.components.TopBar
+import com.example.petrescueapp.presentation.data.DummyPetDataSource
 
 @Composable
 fun Home(

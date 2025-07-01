@@ -1,4 +1,4 @@
-package com.example.petrescueapp.components
+package com.example.petrescueapp.presentation.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

@@ -1,4 +1,4 @@
-package com.example.petrescueapp.ui.theme
+package com.example.petrescueapp.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

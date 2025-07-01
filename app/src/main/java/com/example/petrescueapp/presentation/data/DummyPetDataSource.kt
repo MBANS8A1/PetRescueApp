@@ -1,8 +1,8 @@
-package com.example.petrescueapp.data
+package com.example.petrescueapp.presentation.data
 
 import com.example.petrescueapp.R
-import com.example.petrescueapp.model.Owner
-import com.example.petrescueapp.model.Pet
+import com.example.petrescueapp.presentation.model.Owner
+import com.example.petrescueapp.presentation.model.Pet
 
 
 object DummyPetDataSource {

@@ -1,4 +1,4 @@
-package com.example.petrescueapp.components
+package com.example.petrescueapp.presentation.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -30,8 +30,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.petrescueapp.R
-import com.example.petrescueapp.data.DummyPetDataSource
-import com.example.petrescueapp.model.Owner
+import com.example.petrescueapp.presentation.data.DummyPetDataSource
+import com.example.petrescueapp.presentation.model.Owner
 
 @Composable
 fun OwnerCardInfo(owner: Owner) {
