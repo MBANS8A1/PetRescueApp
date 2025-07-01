@@ -15,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.motionEventSpy
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,7 +25,7 @@ import com.example.petrescueapp.R
 
 
 @Composable
-fun PetBasicInfo(
+fun PetInfoItem(
     name:String,
     gender:String,
     location:String
@@ -90,6 +89,6 @@ fun PetBasicInfo(
 @Preview
 @Composable
 private fun PrevBasicInfoItem() {
-    PetBasicInfo(name="Roller",gender="Male", location = "Toronto CA")
+    PetInfoItem(name="Roller",gender="Male", location = "Toronto CA")
 
 }

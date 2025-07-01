@@ -1,7 +1,7 @@
-package com.example.petrescueapp.data.model
+package com.example.petrescueapp.model
 
 import androidx.annotation.DrawableRes
-import com.example.petrescueapp.data.model.Owner
+import com.example.petrescueapp.model.Owner
 
 data class Pet(
     val name:String,

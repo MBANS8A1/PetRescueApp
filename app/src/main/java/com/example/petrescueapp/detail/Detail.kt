@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,40 +14,35 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.petrescueapp.components.InfoCard
 import com.example.petrescueapp.components.OwnerCardInfo
-import com.example.petrescueapp.components.PetBasicInfo
+import com.example.petrescueapp.components.PetInfoItem
 import com.example.petrescueapp.data.DummyPetDataSource
-import com.example.petrescueapp.data.model.Pet
+import com.example.petrescueapp.model.Pet
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(index:Int,onNavigate:()->Unit) {
     Scaffold(
         topBar = {
+            //non-custom topBar so using TopAppBar
             TopAppBar(
                 title = {
                     Text(text="Detail")
@@ -85,7 +79,7 @@ fun DetailScreen(index:Int,onNavigate:()->Unit) {
                     alignment = Alignment.CenterStart,
                     contentScale = ContentScale.Crop)
                 Spacer(modifier = Modifier.height(16.dp))
-                PetBasicInfo(name=pet.name,gender=pet.gender, location = pet.location)
+                PetInfoItem(name=pet.name,gender=pet.gender, location = pet.location)
             } //image and basic pet info
             item{
                 MyStoryItem(pet = pet)
@@ -93,7 +87,7 @@ fun DetailScreen(index:Int,onNavigate:()->Unit) {
             } //pet story and title
             item{ //pet information via info cards
                 PetInfo(pet = pet)
-            }
+            }// pet information on cards
             item{ //owner information
                 OwnerCardInfo(owner = pet.owner)
             }
@@ -119,7 +113,7 @@ fun PetButton(onClick: () -> Unit) {
 }
 
 @Composable
-fun PetInfo(pet:Pet){
+fun PetInfo(pet: Pet){
     Column {
         Spacer(modifier = Modifier.height(24.dp))
         Title(title = "Pet Info")
@@ -152,35 +146,7 @@ fun PetInfo(pet:Pet){
     }
 }
 
-@Composable
-fun InfoCard(
-    modifier: Modifier = Modifier,
-    primaryText: String,
-    secondaryText: String
-) {
-    Surface(shape=MaterialTheme.shapes.medium,
-        modifier = Modifier) {
-        Column(modifier = Modifier.padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center) {
-            //Material 3 way of making opacity changes below
-            CompositionLocalProvider(
-                LocalContentColor provides MaterialTheme.colorScheme.onSurface
-                    .copy(alpha = 0.4f)
-            ) {
-                Text(text = secondaryText)
-            }
 
-            Text(text=primaryText,
-                style=MaterialTheme.typography.labelSmall,
-                fontWeight = FontWeight.Medium,
-                textAlign = TextAlign.Center)
-            Spacer(modifier = Modifier.size(4.dp))
-        }
-
-    }
-    
-}
 
 
 @Composable

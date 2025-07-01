@@ -27,12 +27,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextAlign.Companion.Center
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.petrescueapp.R
 import com.example.petrescueapp.data.DummyPetDataSource
-import com.example.petrescueapp.data.model.Owner
+import com.example.petrescueapp.model.Owner
 
 @Composable
 fun OwnerCardInfo(owner: Owner) {

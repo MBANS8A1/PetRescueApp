@@ -1,4 +1,4 @@
-package com.example.petrescueapp.data.model
+package com.example.petrescueapp.model
 
 import androidx.annotation.DrawableRes
 
