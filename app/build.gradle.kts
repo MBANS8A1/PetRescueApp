@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -8,6 +10,10 @@ android {
     namespace = "com.example.petrescueapp"
     compileSdk = 35
 
+    buildFeatures{
+        buildConfig=true
+    }
+
     defaultConfig {
         applicationId = "com.example.petrescueapp"
         minSdk = 24
@@ -16,6 +22,15 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
+        val localProperties = Properties().apply{
+            load(project.rootProject.file("local.properties").inputStream())
+        }
+        buildConfigField("String","API_KEY_DEV","\"${localProperties.getProperty("API_KEY_DEV")}\"")
+        buildConfigField("String","SECRET_KEY_DEV","\"${localProperties.getProperty("SECRET_KEY_DEV")}\"")
+
+
     }
 
     buildTypes {
@@ -26,6 +41,7 @@ android {
                 "proguard-rules.pro"
             )
         }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

@@ -1,4 +1,4 @@
-package com.example.petrescueapp.data.models
+package com.example.petrescueapp.data.network.models
 
 
 import kotlinx.serialization.SerialName
