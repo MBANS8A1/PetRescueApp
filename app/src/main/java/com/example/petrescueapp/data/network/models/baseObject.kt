@@ -10,4 +10,5 @@ object baseObject {
     const val SECRET_KEY =BuildConfig.SECRET_KEY_DEV
     const val CLIENT_ID = "client_id"
     const val CLIENT_SECRET = "client_secret"
+    const val USER_TOKEN = "user_token"
 }
