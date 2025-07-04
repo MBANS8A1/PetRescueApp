@@ -1,5 +1,6 @@
 package com.example.petrescueapp.data.network.retrofit
 
+import com.example.petrescueapp.data.network.models.AccessToken
 import com.example.petrescueapp.data.network.models.ApiAnimals
 import com.example.petrescueapp.data.network.models.baseObject.API_KEY
 import com.example.petrescueapp.data.network.models.baseObject.AUTH_ENDPOINT
@@ -27,5 +28,5 @@ interface PetFinderApiService {
         @Field(CLIENT_ID) clientId: String = API_KEY,
         @Field(CLIENT_SECRET) clientSecret: String = SECRET_KEY,
         @Field("grant_type") grantType: String = "client_Credentials"
-    )
+    ):AccessToken
 }
