@@ -1,4 +1,4 @@
-package com.example.petrescueapp.token
+package com.example.petrescueapp.data.network.token
 
 import com.example.petrescueapp.data.network.models.AccessToken
 

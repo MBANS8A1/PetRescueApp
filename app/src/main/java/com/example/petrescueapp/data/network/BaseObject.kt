@@ -1,4 +1,4 @@
-package com.example.petrescueapp.data.network.models
+package com.example.petrescueapp.data.network
 
 import com.example.petrescueapp.BuildConfig
 

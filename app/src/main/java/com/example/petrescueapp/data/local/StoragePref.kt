@@ -2,7 +2,7 @@ package com.example.petrescueapp.data.local
 
 import android.content.Context
 import com.example.petrescueapp.R
-import com.example.petrescueapp.data.network.models.baseObject
+import com.example.petrescueapp.data.network.baseObject
 
 class StoragePref(context:Context) {
     private val pref = context

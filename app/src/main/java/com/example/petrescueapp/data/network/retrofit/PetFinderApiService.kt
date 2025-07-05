@@ -2,12 +2,12 @@ package com.example.petrescueapp.data.network.retrofit
 
 import com.example.petrescueapp.data.network.models.AccessToken
 import com.example.petrescueapp.data.network.models.ApiAnimals
-import com.example.petrescueapp.data.network.models.baseObject.API_KEY
-import com.example.petrescueapp.data.network.models.baseObject.AUTH_ENDPOINT
-import com.example.petrescueapp.data.network.models.baseObject.BASE_ENDPOINT
-import com.example.petrescueapp.data.network.models.baseObject.CLIENT_ID
-import com.example.petrescueapp.data.network.models.baseObject.CLIENT_SECRET
-import com.example.petrescueapp.data.network.models.baseObject.SECRET_KEY
+import com.example.petrescueapp.data.network.baseObject.API_KEY
+import com.example.petrescueapp.data.network.baseObject.AUTH_ENDPOINT
+import com.example.petrescueapp.data.network.baseObject.BASE_ENDPOINT
+import com.example.petrescueapp.data.network.baseObject.CLIENT_ID
+import com.example.petrescueapp.data.network.baseObject.CLIENT_SECRET
+import com.example.petrescueapp.data.network.baseObject.SECRET_KEY
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET

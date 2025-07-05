@@ -1,4 +1,4 @@
-package com.example.petrescueapp.token
+package com.example.petrescueapp.data.network.token
 
 import com.example.petrescueapp.Graph
 import com.example.petrescueapp.data.local.StoragePref
@@ -8,7 +8,7 @@ import kotlinx.coroutines.withContext
 
 class AccessTokenProviderImplementation(
     private val storagePref : StoragePref
-):AccessTokenProvider {
+): AccessTokenProvider {
     override suspend fun fetchAccessToken(): AccessToken? = withContext(
         Dispatchers.IO){
         val accessToken = Graph.apiService.getAuthToken()

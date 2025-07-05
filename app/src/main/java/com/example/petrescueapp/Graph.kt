@@ -2,7 +2,7 @@ package com.example.petrescueapp
 
 import android.content.Context
 import com.example.petrescueapp.data.local.StoragePref
-import com.example.petrescueapp.data.network.models.baseObject
+import com.example.petrescueapp.data.network.baseObject
 import com.example.petrescueapp.data.network.retrofit.PetFinderApiService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
