@@ -9,6 +9,11 @@ import okhttp3.Route
 class AccessTokenAuthorization(
     private val tokenProvider : AccessTokenProvider
 ):Authenticator {
+    private val Response.retryCount:Int
+        get() {
+            var currentResponse = priorResponse
+        }
+
     override fun authenticate(route: Route?, response: Response): Request? {
         TODO("Not yet implemented")
     }
