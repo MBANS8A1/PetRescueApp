@@ -18,6 +18,7 @@ class AccessTokenAuthorization(
                 result++
                 currentResponse = currentResponse.priorResponse
             }
+            return result
         }
 
     override fun authenticate(route: Route?, response: Response): Request? {
@@ -28,7 +29,6 @@ class AccessTokenAuthorization(
             }
         }
     }
-
 
     private suspend fun Response.createSignedRequest():Request? = try{
         tokenProvider.fetchAccessToken()
