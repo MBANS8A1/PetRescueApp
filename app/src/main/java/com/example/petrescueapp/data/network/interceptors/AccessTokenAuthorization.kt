@@ -24,8 +24,18 @@ class AccessTokenAuthorization(
         synchronized(tokenProvider.lock()){
             return when{
                 response.retryCount > 2 -> null
-                else -> runBlocking {response}
+                else -> runBlocking {response.createSignedRequest()}
             }
         }
+    }
+
+
+    private suspend fun Response.createSignedRequest():Request? = try{
+        tokenProvider.fetchAccessToken()
+        request //return
+    }
+    catch(e:Exception){
+        e.printStackTrace()
+        null //return
     }
 }
