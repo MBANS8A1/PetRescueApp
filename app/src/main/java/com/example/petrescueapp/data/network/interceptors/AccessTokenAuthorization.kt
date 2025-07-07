@@ -1,6 +1,6 @@
 package com.example.petrescueapp.data.network.interceptors
-
 import com.example.petrescueapp.data.network.token.AccessTokenProvider
+import kotlinx.coroutines.runBlocking
 import okhttp3.Authenticator
 import okhttp3.Request
 import okhttp3.Response
@@ -11,10 +11,21 @@ class AccessTokenAuthorization(
 ):Authenticator {
     private val Response.retryCount:Int
         get() {
+            //initially currentResponse will be null
             var currentResponse = priorResponse
+            var result = 0
+            while(currentResponse != null){
+                result++
+                currentResponse = currentResponse.priorResponse
+            }
         }
 
     override fun authenticate(route: Route?, response: Response): Request? {
-        TODO("Not yet implemented")
+        synchronized(tokenProvider.lock()){
+            return when{
+                response.retryCount > 2 -> null
+                else -> runBlocking {response}
+            }
+        }
     }
 }
