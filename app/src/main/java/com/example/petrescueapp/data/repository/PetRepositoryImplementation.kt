@@ -9,9 +9,16 @@ import com.example.petrescueapp.utils.ResourceHolder
 
 class PetRepositoryImplementation(
     private val apiService:PetFinderApiService,
-    private val apiMapper: PetApiMapper<List<Pet>,ApiAnimals>
+    private val petApiMapper: PetApiMapper<List<Pet>,ApiAnimals>
 ):PetRepository {
     override suspend fun getAnimal(page: Int): ResourceHolder<List<Pet>> {
-        TODO("Not yet implemented")
+      return try {
+            val data = apiService.getAnimals(page)
+            ResourceHolder.Success(petApiMapper.mapToDomain(data))
+        }
+        catch(e:Exception){
+            e.printStackTrace()
+            ResourceHolder.Error(e.cause)
+        }
     }
 }
