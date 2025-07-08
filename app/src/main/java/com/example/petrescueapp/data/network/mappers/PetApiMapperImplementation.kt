@@ -17,6 +17,22 @@ class PetApiMapperImplementation:PetApiMapper<List<Pet>,ApiAnimals> {
         return apiEntity.animals.map { animal ->
             animal.run{
                 Pet(
+                    id = formatData(id.toString()),
+                    age = formatData(age),
+                    breeds = formatData(breeds?.primary),
+                    colors=formatData(colors?.primary),
+                    contact = formatContacts(contact),
+                    description = formatData(description),
+                    distance = formatData(distance?.toString()),
+                    gender = formatData(gender),
+                    name = formatData(name),
+                    photos = formatPhotos(photos),
+                    size = formatData(size),
+                    species = formatData(species),
+                    status = formatData(status),
+                    tags = tags ?: emptyList(),
+                    type = formatData(type),
+                    currentPage = apiEntity.pagination.currentPage ?: 0
 
                 )
            }
