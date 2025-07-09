@@ -9,6 +9,7 @@ import com.example.petrescueapp.data.network.mappers.PetApiMapper
 import com.example.petrescueapp.data.network.mappers.PetApiMapperImplementation
 import com.example.petrescueapp.data.network.retrofit.PetFinderApiService
 import com.example.petrescueapp.data.network.token.AccessTokenProvider
+import com.example.petrescueapp.data.network.token.AccessTokenProviderImplementation
 import com.example.petrescueapp.data.repository.PetRepositoryImplementation
 import com.example.petrescueapp.domain.repository.PetRepository
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
@@ -40,7 +41,9 @@ object Graph {
 
     fun provide(context:Context){
         tokenStoragePref = StoragePref(context)
+        accessTokenProvider = AccessTokenProviderImplementation(tokenStoragePref)
         apiService = createPetFinderApiService()
+        petRepository = PetRepositoryImplementation(apiService, apiMapper)
     }
 
     private fun createPetFinderApiService():PetFinderApiService{
