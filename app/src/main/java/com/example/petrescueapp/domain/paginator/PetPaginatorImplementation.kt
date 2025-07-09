@@ -14,3 +14,9 @@ class PetPaginatorImplementation<Page,Result>(
         TODO("Not yet implemented")
     }
 }
+
+interface LoadingStateListener<T>{
+    fun onLoadingStateChanged(isLoading:Boolean)
+    fun onDataFetched(data:T)
+    fun onError(error:Throwable)
+}
