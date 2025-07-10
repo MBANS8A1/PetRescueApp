@@ -22,16 +22,21 @@ class MainViewModel(
     private val petPaginator: PetPaginatorImplementation(
         initialKey = getPage(uiState.animals.data),
         loadingState =this,
-        onRequest = {
+        onRequest = { page ->
             if(uiState.isFetchingPet)
                 return@PetPaginatorImplementation ResourceHolder.Loading()
 
-             val pet =
+             val pet = fetchAnimals(page)
         },
         getNextPage = {result ->
             getPage(result.data)
         }
     )
+
+    //helper method to get Pet information
+    private suspend fun fetchAnimals(page:Int):ResourceHolder<List<Pet>>{
+        return repository.getAnimal(page)
+    }
 
     private fun getPage(pageSource: List<Pet>?):Int{
        return if(pageSource?.isEmpty() == true){
