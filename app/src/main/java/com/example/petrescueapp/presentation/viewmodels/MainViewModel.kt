@@ -6,14 +6,14 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.petrescueapp.Graph
 import com.example.petrescueapp.domain.models.Pet
-import com.example.petrescueapp.domain.paginator.PetPaginator
+import com.example.petrescueapp.domain.paginator.LoadingStateListener
 import com.example.petrescueapp.domain.paginator.PetPaginatorImplementation
 import com.example.petrescueapp.domain.repository.PetRepository
 import com.example.petrescueapp.utils.ResourceHolder
 
 class MainViewModel(
     private val repository: PetRepository =  Graph.petRepository
-):ViewModel() {
+):ViewModel(),LoadingStateListener<ResourceHolder<List<Pet>>> {
 
     var uiState by mutableStateOf(Uistate())
     companion object{
@@ -21,13 +21,34 @@ class MainViewModel(
     }
     private val petPaginator: PetPaginatorImplementation(
         initialKey = getPage(uiState.animals.data),
+        loadingState =this,
+        onRequest = {
+            if(uiState.isFetchingPet)
+                return@PetPaginatorImplementation ResourceHolder.Loading()
 
+             val pet =
+        },
+        getNextPage = {result ->
+            getPage(result.data)
+        }
     )
 
     private fun getPage(pageSource: List<Pet>?):Int{
        return if(pageSource?.isEmpty() == true){
             pageSource[pageSource.lastIndex].currentPage + 1
         }else 1
+    }
+
+    override fun onLoadingStateChanged(isLoading: Boolean) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onError(error: Throwable) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDataFetched(data: ResourceHolder<List<Pet>>) {
+        TODO("Not yet implemented")
     }
 
 }
