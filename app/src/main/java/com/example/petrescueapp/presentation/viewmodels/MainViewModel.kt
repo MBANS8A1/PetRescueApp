@@ -1,5 +1,6 @@
 package com.example.petrescueapp.presentation.viewmodels
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -7,7 +8,6 @@ import androidx.lifecycle.ViewModel
 import com.example.petrescueapp.Graph
 import com.example.petrescueapp.domain.models.Pet
 import com.example.petrescueapp.domain.paginator.LoadingStateListener
-import com.example.petrescueapp.domain.paginator.PetPaginator
 import com.example.petrescueapp.domain.paginator.PetPaginatorImplementation
 import com.example.petrescueapp.domain.repository.PetRepository
 import com.example.petrescueapp.utils.ResourceHolder
@@ -46,11 +46,11 @@ class MainViewModel(
     }
 
     override fun onLoadingStateChanged(isLoading: Boolean) {
-        TODO("Not yet implemented")
+        uiState.copy(isFetchingPet = isLoading)
     }
 
     override fun onError(error: Throwable) {
-        TODO("Not yet implemented")
+        Log.e(TAG,"onError: Fetching Pet error",error)
     }
 
     override fun onDataFetched(data: ResourceHolder<List<Pet>>) {
