@@ -5,12 +5,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.petrescueapp.Graph
 import com.example.petrescueapp.domain.models.Pet
 import com.example.petrescueapp.domain.paginator.LoadingStateListener
 import com.example.petrescueapp.domain.paginator.PetPaginatorImplementation
 import com.example.petrescueapp.domain.repository.PetRepository
 import com.example.petrescueapp.utils.ResourceHolder
+import kotlinx.coroutines.launch
 
 class MainViewModel(
     private val repository: PetRepository =  Graph.petRepository
@@ -33,6 +35,16 @@ class MainViewModel(
             getPage(result.data)
         }
     )
+
+    init{
+        loadNextPetsPage()
+    }
+
+    private fun loadNextPetsPage(){
+        viewModelScope.launch {
+            petPaginator.fetchNextPage()
+        }
+    }
 
     //helper method to get Pet information
     private suspend fun fetchAnimals(page:Int):ResourceHolder<List<Pet>>{
