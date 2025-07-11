@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.petrescueapp.Graph
 import com.example.petrescueapp.domain.models.Pet
 import com.example.petrescueapp.domain.paginator.LoadingStateListener
+import com.example.petrescueapp.domain.paginator.PetPaginator
 import com.example.petrescueapp.domain.paginator.PetPaginatorImplementation
 import com.example.petrescueapp.domain.repository.PetRepository
 import com.example.petrescueapp.utils.ResourceHolder
@@ -19,14 +20,14 @@ class MainViewModel(
     companion object{
         const val TAG = "myModel"
     }
-    private val petPaginator: PetPaginatorImplementation(
+    private val petPaginator = PetPaginatorImplementation(
         initialKey = getPage(uiState.animals.data),
         loadingState =this,
         onRequest = { page ->
             if(uiState.isFetchingPet)
                 return@PetPaginatorImplementation ResourceHolder.Loading()
-
              val pet = fetchAnimals(page)
+             pet
         },
         getNextPage = {result ->
             getPage(result.data)
