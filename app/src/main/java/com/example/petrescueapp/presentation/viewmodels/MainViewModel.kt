@@ -54,7 +54,19 @@ class MainViewModel(
     }
 
     override fun onDataFetched(data: ResourceHolder<List<Pet>>) {
-        TODO("Not yet implemented")
+        uiState =uiState
+    }
+
+    private fun Uistate.updateAnimal(newData:ResourceHolder<List<Pet>>){
+        return when(newData){
+            is ResourceHolder.Success ->{
+                val updatedData = this.animals.data?.
+            }
+        }
+    }
+
+    private fun <Data> List<Data>.combineData(newList:List<Data>):ResourceHolder<List<Data>>{
+        return ResourceHolder.Success(data=this.union(newList).toList())
     }
 
 }
