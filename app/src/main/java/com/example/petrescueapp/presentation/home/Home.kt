@@ -10,11 +10,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.petrescueapp.presentation.components.PetItemCard
 import com.example.petrescueapp.presentation.components.TopBar
 import com.example.petrescueapp.presentation.data.DummyPetDataSource
+import com.example.petrescueapp.presentation.viewmodels.Uistate
 
 @Composable
 fun Home(
     onSwitchClick:() ->Unit,
-    onPetClick:(Int)-> Unit    //index of the Pet
+    onPetClick:(Int)-> Unit,    //index of the Pet
+    onLoadNextPage: () -> Unit,
+    onInfiniteScrollingChange:(Boolean) -> Unit,
+    uistate: Uistate
 ) {
     val petList = DummyPetDataSource.dogList
     Scaffold(
