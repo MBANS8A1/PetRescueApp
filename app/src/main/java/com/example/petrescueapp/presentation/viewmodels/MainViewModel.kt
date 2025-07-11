@@ -54,14 +54,19 @@ class MainViewModel(
     }
 
     override fun onDataFetched(data: ResourceHolder<List<Pet>>) {
-        uiState =uiState
+        uiState =uiState.updateAnimal(data)
     }
 
-    private fun Uistate.updateAnimal(newData:ResourceHolder<List<Pet>>){
+    private fun Uistate.updateAnimal(newData:ResourceHolder<List<Pet>>):Uistate{
         return when(newData){
             is ResourceHolder.Success ->{
                 val updatedData = this.animals.data?.combineData(newData.data!!) ?: newData
+                copy(animals = updatedData)
             }
+            is ResourceHolder.Error ->{
+                copy(animals = newData)
+            }
+            else ->this //return the same data
         }
     }
 
