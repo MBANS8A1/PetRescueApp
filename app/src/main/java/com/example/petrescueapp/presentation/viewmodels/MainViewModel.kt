@@ -60,7 +60,7 @@ class MainViewModel(
     private fun Uistate.updateAnimal(newData:ResourceHolder<List<Pet>>){
         return when(newData){
             is ResourceHolder.Success ->{
-                val updatedData = this.animals.data?.
+                val updatedData = this.animals.data?.combineData(newData.data!!) ?: newData
             }
         }
     }
