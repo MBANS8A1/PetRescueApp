@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -62,6 +63,9 @@ fun PetItemCard(
                mutableStateOf(false)
            }
            Row{
+               if(isLoading){
+                   CircularProgressIndicator()
+               }
                AsyncImage(modifier = Modifier.size(80.dp,80.dp)
                    .clip((RoundedCornerShape(16.dp))),
                    model = if(pet.photos.isNotEmpty()) pet.photos[0].medium
@@ -93,7 +97,7 @@ fun PetItemCard(
                        text = buildString {
                            append(pet.age)
                            append(" | ")
-                           append(pet.breed)
+                           append(pet.breeds)
                        },
                        color=MaterialTheme.colorScheme.onSurface,
                        style = MaterialTheme.typography.bodySmall
@@ -108,7 +112,7 @@ fun PetItemCard(
                            modifier=Modifier.size(16.dp,16.dp),
                            tint = androidx.compose.ui.graphics.Color.Red
                        )
-                       Text(text=pet.location, modifier = Modifier.padding(
+                       Text(text=pet.contact.address, modifier = Modifier.padding(
                            start=8.dp,
                            top=0.dp,
                            end=12.dp,
@@ -160,11 +164,3 @@ fun GenderTag(gender:String,modifier:Modifier){
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-private fun PrevPetInfo() {
-    //using dummy data source
-    //get a random pet icon
-    val petItem = DummyPetDataSource.dogList.random()
-    PetItemCard(petItem){}
-}
