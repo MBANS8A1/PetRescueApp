@@ -1,6 +1,5 @@
 package com.example.petrescueapp.presentation.components
 
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -32,8 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.petrescueapp.R
-import com.example.petrescueapp.presentation.data.DummyPetDataSource
-import com.example.petrescueapp.presentation.model.Pet
+import com.example.petrescueapp.domain.models.Pet
 
 @Composable
 fun PetItemCard(
