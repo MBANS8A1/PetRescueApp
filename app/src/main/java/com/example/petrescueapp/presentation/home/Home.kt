@@ -2,15 +2,23 @@ package com.example.petrescueapp.presentation.home
 
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.petrescueapp.presentation.components.PetItemCard
 import com.example.petrescueapp.presentation.components.TopBar
 import com.example.petrescueapp.presentation.data.DummyPetDataSource
 import com.example.petrescueapp.presentation.viewmodels.Uistate
+import com.example.petrescueapp.utils.ResourceHolder
 
 @Composable
 fun Home(
@@ -20,6 +28,9 @@ fun Home(
     onInfiniteScrollingChange:(Boolean) -> Unit,
     uistate: Uistate
 ) {
+    var scrollState = rememberLazyListState()
+
+
     val petList = DummyPetDataSource.dogList
     Scaffold(
         topBar = {
@@ -30,14 +41,16 @@ fun Home(
     ) {
         paddingValues: PaddingValues ->
         LazyColumn(contentPadding = paddingValues) {
-            itemsIndexed(petList){index,pet->
-                PetItemCard(pet) {
-                    onPetClick(index)
-
+            when (uistate.animals) {
+                is ResourceHolder.Loading ->{
+                    CircularProgressIndicator(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .wrapContentSize(align =Alignment.Center)
+                    )
                 }
             }
         }
-
     }
 }
 
