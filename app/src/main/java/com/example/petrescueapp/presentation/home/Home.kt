@@ -49,6 +49,17 @@ fun Home(
                             .wrapContentSize(align =Alignment.Center)
                     )
                 }
+                is ResourceHolder.Success ->{
+                    val petList = uistate.animals.data ?: emptyList()
+                    itemsIndexed(petList){index,item ->
+                        PetItemCard(
+                            pet = item,
+                            onPetItemClick = {
+                                onPetClick.invoke(index)
+                            }
+                        )
+                    }
+                }
             }
         }
     }
