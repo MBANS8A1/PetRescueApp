@@ -69,7 +69,16 @@ fun PetItemCard(
                    placeholder = painterResource(id=R.drawable.placeholder_ic),
                    contentDescription="",
                    contentScale = ContentScale.Crop,
-                   alignment = Alignment.CenterStart
+                   alignment = Alignment.CenterStart,
+                   onLoading = {
+                        isLoading =true
+                   },
+                   onError = {
+                       it.result.throwable.printStackTrace()
+                   },
+                   onSuccess = {
+                       isLoading = false
+                   }
                )
                Spacer(modifier=Modifier.width(16.dp))
 
