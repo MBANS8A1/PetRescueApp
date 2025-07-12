@@ -85,4 +85,6 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
     implementation ("androidx.lifecycle:lifecycle-common-java8:2.6.1")
+    //coil
+    implementation("io.coil-kt:coil-compose:2.1.0")
 }
