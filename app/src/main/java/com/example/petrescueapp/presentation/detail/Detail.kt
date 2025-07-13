@@ -31,15 +31,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.petrescueapp.domain.models.Pet
 import com.example.petrescueapp.presentation.components.InfoCard
 import com.example.petrescueapp.presentation.components.OwnerCardInfo
 import com.example.petrescueapp.presentation.components.PetInfoItem
-import com.example.petrescueapp.presentation.data.DummyPetDataSource
-import com.example.petrescueapp.presentation.model.Pet
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailScreen(index:Int,onNavigate:()->Unit) {
+fun DetailScreen(pet: Pet, onNavigate:()->Unit) {
     Scaffold(
         topBar = {
             //non-custom topBar so using TopAppBar
@@ -68,7 +67,6 @@ fun DetailScreen(index:Int,onNavigate:()->Unit) {
         }
     ) {padding ->
         //use dummy data source for now
-        val pet = DummyPetDataSource.dogList[index]
         LazyColumn(contentPadding = padding) {
             item {
                 Image(painter = painterResource(id=pet.image),
@@ -179,17 +177,6 @@ fun Title(title:String) {
     )
 }
 
-@Preview(showSystemUi = true)
-@Composable
-private fun PrevDetailScreen() {
-    DetailScreen(index=0) {  }
-}
 
-@Preview(showBackground = true)
-@Composable
-private fun PrevInfoCard() {
-    val pet = DummyPetDataSource.dogList[0]
-    PetInfo(pet=pet)
-}
 
 
