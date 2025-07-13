@@ -12,9 +12,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -25,12 +27,14 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import com.example.petrescueapp.R
 import com.example.petrescueapp.domain.models.Pet
 import com.example.petrescueapp.presentation.components.InfoCard
 import com.example.petrescueapp.presentation.components.OwnerCardInfo
@@ -69,13 +73,27 @@ fun DetailScreen(pet: Pet, onNavigate:()->Unit) {
         //use dummy data source for now
         LazyColumn(contentPadding = padding) {
             item {
-                Image(painter = painterResource(id=pet.image),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(346.dp),
+                if(isLoading){
+                    CircularProgressIndicator()
+                }
+                AsyncImage(modifier = Modifier.size(80.dp,80.dp)
+                    .clip((RoundedCornerShape(16.dp))),
+                    model = if(pet.photos.isNotEmpty()) pet.photos[0].medium
+                    else null,
+                    placeholder = painterResource(id= R.drawable.placeholder_ic),
+                    contentDescription="",
+                    contentScale = ContentScale.Crop,
                     alignment = Alignment.CenterStart,
-                    contentScale = ContentScale.Crop)
+                    onLoading = {
+                        isLoading =true
+                    },
+                    onError = {
+                        it.result.throwable.printStackTrace()
+                    },
+                    onSuccess = {
+                        isLoading = false
+                    }
+                )
                 Spacer(modifier = Modifier.height(16.dp))
                 PetInfoItem(name=pet.name,gender=pet.gender, location = pet.location)
             } //image and basic pet info
