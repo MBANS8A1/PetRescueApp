@@ -13,6 +13,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -20,11 +21,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.petrescueapp.presentation.components.PetItemCard
 import com.example.petrescueapp.presentation.components.TopBar
-import com.example.petrescueapp.presentation.data.DummyPetDataSource
 import com.example.petrescueapp.presentation.viewmodels.Uistate
 import com.example.petrescueapp.utils.ResourceHolder
 
@@ -38,8 +38,6 @@ fun Home(
 ) {
     var scrollState = rememberLazyListState()
 
-
-    val petList = DummyPetDataSource.dogList
     Scaffold(
         topBar = {
             TopBar{
@@ -51,11 +49,13 @@ fun Home(
         LazyColumn(contentPadding = paddingValues) {
             when (uistate.animals) {
                 is ResourceHolder.Loading ->{
-                    CircularProgressIndicator(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .wrapContentSize(align =Alignment.Center)
-                    )
+                   item {
+                       CircularProgressIndicator(
+                           modifier = Modifier
+                               .fillMaxSize()
+                               .wrapContentSize(align = Alignment.Center)
+                       )
+                   }
                 }
                 is ResourceHolder.Success ->{
                     val petList = uistate.animals.data ?: emptyList()
@@ -97,10 +97,20 @@ fun Home(
                                         onInfiniteScrollingChange(true)
                                     }
                                 ){
-                                    Text(text="Load More Pets")
+                                    Text(
+                                        text="Load More Pets",
+                                        color=MaterialTheme.colorScheme.error
+                                    )
                                 }
                             }
                         }
+                    }
+                }
+
+                else -> {
+                    uistate.animals.throwable?.printStackTrace()
+                    item{
+                        Text("Error Occurred")
                     }
                 }
             }
@@ -108,8 +118,3 @@ fun Home(
     }
 }
 
-@Preview
-@Composable
-private fun PrevItem() {
-    Home(onSwitchClick = {},){}
-}
