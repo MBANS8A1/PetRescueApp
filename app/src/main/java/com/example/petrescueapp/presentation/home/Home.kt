@@ -69,6 +69,11 @@ fun Home(
                             }
                         }
                     }
+                    if(uistate.isFetchingPet){
+                        item{
+                            CircularProgressIndicator()
+                        }
+                    }
                 }
             }
         }
