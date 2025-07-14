@@ -28,7 +28,9 @@ import com.example.petrescueapp.R
 fun PetInfoItem(
     name:String,
     gender:String,
-    location:String
+    location:String,
+    species: String,
+    status: String
 ) {
     Row(
         modifier = Modifier
@@ -63,7 +65,7 @@ fun PetInfoItem(
 
             }
             Spacer(modifier = Modifier.height(12.dp))
-            Text(text="Adoptable", modifier = Modifier
+            Text(text=status, modifier = Modifier
                 .padding(
                 start=4.dp,top=0.dp,end=12.dp,bottom=0.dp
             ),
@@ -75,9 +77,8 @@ fun PetInfoItem(
         Column(modifier = Modifier.height(112.dp),
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally) {
-            GenderTag(gender="Male", modifier = Modifier)
-            //Hardcode type of pet for now below
-            Text(text="Dog",
+            GenderTag(gender=gender, modifier = Modifier)
+            Text(text=species,
                 color=MaterialTheme.colorScheme.onSurface,
                 style=MaterialTheme.typography.labelSmall)
         }
@@ -86,9 +87,3 @@ fun PetInfoItem(
 
 }
 
-@Preview
-@Composable
-private fun PrevBasicInfoItem() {
-    PetInfoItem(name="Roller",gender="Male", location = "Toronto CA")
-
-}

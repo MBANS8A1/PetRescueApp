@@ -25,6 +25,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -70,7 +74,9 @@ fun DetailScreen(pet: Pet, onNavigate:()->Unit) {
             )
         }
     ) {padding ->
-        //use dummy data source for now
+        var isLoading:Boolean by remember {
+            mutableStateOf(false)
+        }
         LazyColumn(contentPadding = padding) {
             item {
                 if(isLoading){
@@ -78,7 +84,7 @@ fun DetailScreen(pet: Pet, onNavigate:()->Unit) {
                 }
                 AsyncImage(modifier = Modifier.size(80.dp,80.dp)
                     .clip((RoundedCornerShape(16.dp))),
-                    model = if(pet.photos.isNotEmpty()) pet.photos[0].medium
+                    model = if(pet.photos.isNotEmpty()) pet.photos[0].full
                     else null,
                     placeholder = painterResource(id= R.drawable.placeholder_ic),
                     contentDescription="",
@@ -95,7 +101,12 @@ fun DetailScreen(pet: Pet, onNavigate:()->Unit) {
                     }
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                PetInfoItem(name=pet.name,gender=pet.gender, location = pet.location)
+                PetInfoItem(name=pet.name,
+                    gender=pet.gender,
+                    location = pet.contact.address,
+                    species = pet.species,
+                    status = pet.status
+                )
             } //image and basic pet info
             item{
                 MyStoryItem(pet = pet)
@@ -104,9 +115,7 @@ fun DetailScreen(pet: Pet, onNavigate:()->Unit) {
             item{ //pet information via info cards
                 PetInfo(pet = pet)
             }// pet information on cards
-            item{ //owner information
-                OwnerCardInfo(owner = pet.owner)
-            }
+             //owner information was here (pet.owner) but we do not have it anymore
             item{
                 PetButton {
 
@@ -139,19 +148,19 @@ fun PetInfo(pet: Pet){
             horizontalArrangement = Arrangement.SpaceAround
         ) {
 
-            InfoCard(primaryText =pet.age ,
+            InfoCard(primaryText ="${pet.age} yrs",
                 secondaryText ="Age",
                 modifier = Modifier
                     .weight(weight = 1f)
                     .padding(4.dp)
             )
-            InfoCard(primaryText =pet.color,
+            InfoCard(primaryText =pet.colors,
                 secondaryText ="Colour",
                 modifier = Modifier
                     .weight(weight = 1f)
                     .padding(4.dp)
                 )
-            InfoCard(primaryText =pet.breed,
+            InfoCard(primaryText =pet.breeds,
                 secondaryText ="Breed",
                 modifier = Modifier
                     .weight(weight = 1f)
