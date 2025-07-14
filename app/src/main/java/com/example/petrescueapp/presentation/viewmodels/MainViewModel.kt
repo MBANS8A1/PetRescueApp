@@ -41,6 +41,7 @@ class MainViewModel(
         loadNextPetsPage()
     }
 
+    //Removed the private access modifier
     fun loadNextPetsPage(){
         viewModelScope.launch {
             petPaginator.fetchNextPage()
