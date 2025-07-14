@@ -9,7 +9,7 @@ data class Colors(
     @SerialName("primary")
     val primary: String = "",
     @SerialName("secondary")
-    val secondary: Any? = null,
+    val secondary: String? = null,
     @SerialName("tertiary")
-    val tertiary: Any? = null
+    val tertiary: String? = null
 )

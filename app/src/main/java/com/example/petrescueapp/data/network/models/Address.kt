@@ -7,9 +7,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Address(
     @SerialName("address1")
-    val address1: Any? = null,
+    val address1: String? = null,
     @SerialName("address2")
-    val address2: Any? = null,
+    val address2: String? = null,
     @SerialName("city")
     val city: String = "",
     @SerialName("country")
