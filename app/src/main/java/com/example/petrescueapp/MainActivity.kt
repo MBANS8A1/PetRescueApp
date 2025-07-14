@@ -18,9 +18,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.petrescueapp.presentation.detail.DetailScreen
 import com.example.petrescueapp.presentation.home.Home
 import com.example.petrescueapp.presentation.ui.theme.PetRescueAppTheme
+import com.example.petrescueapp.presentation.viewmodels.MainViewModel
 
 
 class MainActivity : ComponentActivity() {
@@ -28,6 +30,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val viewModel = viewModel(modelClass= MainViewModel::class.java)
             var isDarkTheme by remember{
                 mutableStateOf(false)
             }
@@ -45,12 +48,22 @@ class MainActivity : ComponentActivity() {
                     ){
                     when(currentScreen){
                         Screen.Home ->{
-                            Home(onSwitchClick = { isDarkTheme = !isDarkTheme
+                            Home(
+                                uistate = viewModel.uiState,
+                                onSwitchClick = { isDarkTheme = !isDarkTheme
                             },
+
                                 onPetClick ={ index->
                                     currentScreen = Screen.Detail
                                     selectedIndex = index
-                                } )
+                                } ,
+                                onLoadNextPage = viewModel::loadNextPetsPage,
+                                onInfiniteScrollingChange = {
+
+                                }
+
+
+                            )
                         }
                         Screen.Detail->{
                             DetailScreen(index = selectedIndex) {

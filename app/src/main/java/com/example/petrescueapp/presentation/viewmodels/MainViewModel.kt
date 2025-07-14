@@ -1,6 +1,7 @@
 package com.example.petrescueapp.presentation.viewmodels
 
 import android.util.Log
+import androidx.annotation.MainThread
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -40,11 +41,12 @@ class MainViewModel(
         loadNextPetsPage()
     }
 
-    private fun loadNextPetsPage(){
+    fun loadNextPetsPage(){
         viewModelScope.launch {
             petPaginator.fetchNextPage()
         }
     }
+
 
     //helper method to get Pet information
     private suspend fun fetchAnimals(page:Int):ResourceHolder<List<Pet>>{
