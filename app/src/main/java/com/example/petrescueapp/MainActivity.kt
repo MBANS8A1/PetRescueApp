@@ -5,19 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.petrescueapp.presentation.detail.DetailScreen
 import com.example.petrescueapp.presentation.home.Home
@@ -37,7 +32,7 @@ class MainActivity : ComponentActivity() {
             var currentScreen by remember{
                 mutableStateOf(Screen.Home)
             }
-            var selectedIndex by remember{
+            var id by remember{
                 mutableIntStateOf(-1)
             }
             PetRescueAppTheme(
@@ -53,9 +48,9 @@ class MainActivity : ComponentActivity() {
                                 onSwitchClick = { isDarkTheme = !isDarkTheme
                             },
 
-                                onPetClick ={ index->
+                                onPetClick ={ selectedId->
                                     currentScreen = Screen.Detail
-                                    selectedIndex = index
+                                    id = selectedId
                                 } ,
                                 onLoadNextPage = viewModel::loadNextPetsPage,
                                 onInfiniteScrollingChange = {
@@ -66,7 +61,9 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         Screen.Detail->{
-                            DetailScreen(index = selectedIndex) {
+                            DetailScreen(
+                                pet = viewModel.uiState.animals.data?.get(id)!!
+                            ) {
                                 currentScreen = Screen.Home
                             }
                         }

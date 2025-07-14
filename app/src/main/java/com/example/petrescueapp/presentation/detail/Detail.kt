@@ -1,6 +1,5 @@
 package com.example.petrescueapp.presentation.detail
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -41,7 +40,6 @@ import coil.compose.AsyncImage
 import com.example.petrescueapp.R
 import com.example.petrescueapp.domain.models.Pet
 import com.example.petrescueapp.presentation.components.InfoCard
-import com.example.petrescueapp.presentation.components.OwnerCardInfo
 import com.example.petrescueapp.presentation.components.PetInfoItem
 
 @OptIn(ExperimentalMaterial3Api::class)
