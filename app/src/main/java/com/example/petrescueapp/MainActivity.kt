@@ -59,7 +59,7 @@ class MainActivity : ComponentActivity() {
                                 } ,
                                 onLoadNextPage = viewModel::loadNextPetsPage,
                                 onInfiniteScrollingChange = {
-
+                                    viewModel.onInfiniteScrollChange(it)
                                 }
 
 

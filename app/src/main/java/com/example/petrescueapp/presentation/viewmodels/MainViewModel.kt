@@ -48,6 +48,10 @@ class MainViewModel(
         }
     }
 
+    fun onInfiniteScrollChange(start: Boolean){
+        uiState =uiState.copy(startInfiniteScrolling = start)
+    }
+
 
     //helper method to get Pet information
     private suspend fun fetchAnimals(page:Int):ResourceHolder<List<Pet>>{
