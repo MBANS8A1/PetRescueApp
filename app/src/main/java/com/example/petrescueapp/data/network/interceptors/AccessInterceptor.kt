@@ -15,7 +15,7 @@ class AccessInterceptor(
 
     private fun Request.signedRequest() : Request{
        return newBuilder()
-           .addHeader("Authorization","Bearer  ${accessTokenProvider.token()}")
+           .addHeader("Authorization","Bearer ${accessTokenProvider.token()}")
            .build()
     }
 
