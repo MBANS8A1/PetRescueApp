@@ -83,7 +83,7 @@ fun Home(
                     }
                     item{
                         AnimatedVisibility(
-                            visible = uistate.loadMoreButton
+                            visible = uistate.loadMoreButtonVisible
                         ){
                             Box(
                                 contentAlignment = Alignment.Center,
