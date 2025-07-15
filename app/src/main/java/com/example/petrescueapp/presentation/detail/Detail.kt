@@ -183,7 +183,7 @@ fun MyStoryItem(pet: Pet) {
         Spacer(modifier = Modifier.height(16.dp))
         Text(text= pet.description, modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(start=20.dp, top=8.dp,end=8.dp, bottom = 8.dp),
             color = MaterialTheme.colorScheme.onSurface,
             style=  MaterialTheme.typography.bodySmall,
             textAlign = TextAlign.Start)
