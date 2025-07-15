@@ -62,7 +62,9 @@ fun PetItemCard(
            var isLoading:Boolean by remember {
                mutableStateOf(false)
            }
-           Row{
+           Row(
+               modifier = Modifier.weight(1f)
+           ){
                if(isLoading){
                    CircularProgressIndicator()
                }
@@ -74,6 +76,7 @@ fun PetItemCard(
                    contentDescription="",
                    contentScale = ContentScale.Crop,
                    alignment = Alignment.CenterStart,
+                   error = painterResource(id=R.drawable.placeholder_ic),
                    onLoading = {
                         isLoading =true
                    },
@@ -151,8 +154,7 @@ fun GenderTag(gender:String,modifier:Modifier){
             .wrapContentSize()
             .clip(RoundedCornerShape(12.dp))
             .background(colour.copy(alpha=0.2f))
-
-
+            .padding(top = 2.dp)
     ){
         Text(
             text=gender,

@@ -40,7 +40,7 @@ fun PetInfoItem(
     ){
         Column(modifier = Modifier.align(Alignment.CenterVertically)) {
             Text(text=name,
-                modifier = Modifier.padding(start = 0.5.dp, top=12.dp, end=12.dp, bottom=12.dp),
+                modifier = Modifier.padding(start = 0.8.dp, top=10.dp, end=12.dp, bottom=10.dp),
                 color = MaterialTheme.colorScheme.onSurface,
                 fontWeight = FontWeight.Bold,
                 style= MaterialTheme.typography.headlineMedium

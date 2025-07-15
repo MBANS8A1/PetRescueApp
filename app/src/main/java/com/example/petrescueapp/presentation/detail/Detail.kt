@@ -80,10 +80,13 @@ fun DetailScreen(pet: Pet, onNavigate:()->Unit) {
                 if(isLoading){
                     CircularProgressIndicator()
                 }
-                AsyncImage(modifier = Modifier.size(80.dp,80.dp)
-                    .clip((RoundedCornerShape(16.dp))),
+                AsyncImage(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(346.dp),
                     model = if(pet.photos.isNotEmpty()) pet.photos[0].full
                     else null,
+                    error = painterResource(id= R.drawable.placeholder_ic),
                     placeholder = painterResource(id= R.drawable.placeholder_ic),
                     contentDescription="",
                     contentScale = ContentScale.Crop,
@@ -193,7 +196,7 @@ fun Title(title:String) {
         text=title,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 7.dp)
+            .padding(start = 20.dp)
         ,
         color = MaterialTheme.colorScheme.onSurface,
         style = MaterialTheme.typography.titleSmall,
