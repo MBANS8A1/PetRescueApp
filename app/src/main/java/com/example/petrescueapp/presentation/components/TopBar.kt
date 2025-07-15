@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -29,7 +30,9 @@ fun TopBar(onSwitchToggle: () -> Unit) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text="Hi Sean,",textAlign=TextAlign.Start,
                 style= MaterialTheme.typography.headlineMedium,
-                color=MaterialTheme.colorScheme.onSurface
+                color=MaterialTheme.colorScheme.onSurface,
+                modifier = Modifier
+                    .padding(top=30.dp)
                 )
             Spacer(modifier = Modifier.height(8.dp))
             Text(text="Find a new pet near you to adopt!",textAlign=TextAlign.Start,
@@ -37,10 +40,12 @@ fun TopBar(onSwitchToggle: () -> Unit) {
                 color=MaterialTheme.colorScheme.onSurface
             )
         }
-
+        Spacer(modifier = Modifier.width(50.dp))
         Row(modifier = Modifier
-            .fillMaxWidth().padding(top=24.dp,
-                end= 36.dp)) {
+            .fillMaxWidth().padding(top=45.dp,
+                end= 35.dp),
+            horizontalArrangement = Arrangement.End
+        ) {
 
             PetSwitch {
                 onSwitchToggle.invoke()
@@ -61,10 +66,11 @@ fun PetSwitch(onSwitchToggle:() -> Unit) {
     }
 
     Icon(painter= icon, contentDescription = null,
-        modifier=Modifier.size(24.dp,24.dp)
+        modifier=Modifier.size(30.dp,30.dp)
         .clickable(
             onClick = {onSwitchToggle.invoke()}
-        ),
+        ).padding(top=6.dp)
+        ,
         tint = MaterialTheme.colorScheme.onSurface)
 }
 
