@@ -49,7 +49,9 @@ class MainViewModel(
     }
 
     fun onInfiniteScrollChange(start: Boolean){
-        uiState =uiState.copy(startInfiniteScrolling = start)
+        uiState =uiState.copy(startInfiniteScrolling = start,
+            loadMoreButtonVisible = !start
+            )
     }
 
 
@@ -97,6 +99,6 @@ class MainViewModel(
 data class Uistate(
     val animals: ResourceHolder<List<Pet>> = ResourceHolder.Loading(),
     val isFetchingPet: Boolean = false,
-    val loadMoreButton: Boolean = true,
+    val loadMoreButtonVisible: Boolean = true,
     val startInfiniteScrolling: Boolean = false
 )
