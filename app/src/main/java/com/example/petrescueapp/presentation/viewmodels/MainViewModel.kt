@@ -61,7 +61,7 @@ class MainViewModel(
     }
 
     private fun getPage(pageSource: List<Pet>?):Int{
-       return if(pageSource?.isEmpty() == true){
+       return if(pageSource?.isNotEmpty() == true){
             pageSource[pageSource.lastIndex].currentPage + 1
         }else 1
     }
