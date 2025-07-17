@@ -17,6 +17,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.petrescueapp.presentation.detail.DetailScreen
 import com.example.petrescueapp.presentation.home.Home
+import com.example.petrescueapp.presentation.navigation.PetRescueNavigation
 import com.example.petrescueapp.presentation.ui.theme.PetRescueAppTheme
 import com.example.petrescueapp.presentation.viewmodels.MainViewModel
 
@@ -30,9 +31,6 @@ class MainActivity : ComponentActivity() {
             var isDarkTheme by remember{
                 mutableStateOf(false)
             }
-            var currentScreen by remember{
-                mutableStateOf(Screen.Home)
-            }
             var id by remember{
                 mutableIntStateOf(-1)
             }
@@ -43,14 +41,7 @@ class MainActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(),
                     color= MaterialTheme.colorScheme.background
                     ){
-                    when(currentScreen){
-                        Screen.Home ->{
-
-                        }
-                        Screen.Detail->{
-
-                        }
-                    }
+                    PetRescueNavigation()
                 }
             }
         }

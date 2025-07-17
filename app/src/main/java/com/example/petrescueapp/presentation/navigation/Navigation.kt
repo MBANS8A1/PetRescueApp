@@ -41,11 +41,12 @@ fun PetRescueNavigation(
             }
             composable(route=Screen.Detail.name){
                 DetailScreen(
-                    pet = viewModel.uiState.animals.data?.get(id)!!
+                    pet = uistate.animals.data?.get(0)!!
                 ) {
-                    currentScreen = Screen.Home
                 }
             }
     }
 }
+
+
 
