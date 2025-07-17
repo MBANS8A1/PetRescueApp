@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.rememberNavController
 import com.example.petrescueapp.presentation.detail.DetailScreen
 import com.example.petrescueapp.presentation.home.Home
 import com.example.petrescueapp.presentation.ui.theme.PetRescueAppTheme
@@ -35,6 +36,7 @@ class MainActivity : ComponentActivity() {
             var id by remember{
                 mutableIntStateOf(-1)
             }
+            val navController  = rememberNavController()
             PetRescueAppTheme(
                 darkTheme = isDarkTheme
             ) {
@@ -43,22 +45,7 @@ class MainActivity : ComponentActivity() {
                     ){
                     when(currentScreen){
                         Screen.Home ->{
-                            Home(
-                                uistate = viewModel.uiState,
-                                onSwitchClick = { isDarkTheme = !isDarkTheme
-                            },
 
-                                onPetClick ={ selectedId->
-                                    currentScreen = Screen.Detail
-                                    id = selectedId
-                                } ,
-                                onLoadNextPage = viewModel::loadNextPetsPage,
-                                onInfiniteScrollingChange = {
-                                    viewModel.onInfiniteScrollChange(it)
-                                }
-
-
-                            )
                         }
                         Screen.Detail->{
                             DetailScreen(
@@ -75,7 +62,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-enum class Screen{
-    Home,
-    Detail
-}
