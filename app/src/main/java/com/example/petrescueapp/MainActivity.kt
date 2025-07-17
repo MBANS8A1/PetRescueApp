@@ -41,7 +41,13 @@ class MainActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(),
                     color= MaterialTheme.colorScheme.background
                     ){
-                    PetRescueNavigation()
+                    PetRescueNavigation(
+                        navController = navController,
+                        uistate = viewModel.uiState,
+                        onThemeChange = {isDarkTheme = !isDarkTheme},
+                        onLoadNextPage = viewModel::loadNextPetsPage,
+                        onInfiniteScrollChange = viewModel::onInfiniteScrollChange
+                    )
                 }
             }
         }
