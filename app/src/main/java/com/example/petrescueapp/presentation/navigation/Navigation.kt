@@ -6,6 +6,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.petrescueapp.presentation.home.Home
+import com.example.petrescueapp.presentation.viewmodels.MainViewModel
+import com.example.petrescueapp.presentation.viewmodels.Uistate
 
 enum class Screen{
     Home,
@@ -15,8 +17,10 @@ enum class Screen{
 @Composable
 fun PetRescueNavigation(
     navController: NavHostController,
-    uistate: UiState,
-    onThemeChange: () -> Unit
+    uistate: Uistate,
+    onThemeChange: () -> Unit,
+    onLoadNextPage: () -> Unit,
+    onInfiniteScrollChange: (Boolean) -> Unit
 ) {
     NavHost(navController = navController,
            startDestination = Screen.Home.name,
@@ -30,11 +34,8 @@ fun PetRescueNavigation(
                     onPetClick ={ selectedId->
 
                     } ,
-                    onLoadNextPage = viewModel::loadNextPetsPage,
-                    onInfiniteScrollingChange = {
-                        viewModel.onInfiniteScrollChange(it)
-                    }
-
+                    onLoadNextPage = onLoadNextPage,
+                    onInfiniteScrollingChange = onInfiniteScrollChange
                 )
             }
     }
