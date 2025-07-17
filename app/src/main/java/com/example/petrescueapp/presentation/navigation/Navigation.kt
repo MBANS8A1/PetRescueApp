@@ -38,6 +38,10 @@ fun PetRescueNavigation(
                     onInfiniteScrollingChange = onInfiniteScrollChange
                 )
             }
+            composable(route=Screen.Detail.name){
+
+            }
+
     }
 }
 
