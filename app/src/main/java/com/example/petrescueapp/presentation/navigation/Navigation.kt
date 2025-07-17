@@ -15,7 +15,8 @@ enum class Screen{
 @Composable
 fun PetRescueNavigation(
     navController: NavHostController,
-    uistate: UiState
+    uistate: UiState,
+    onThemeChange: () -> Unit
 ) {
     NavHost(navController = navController,
            startDestination = Screen.Home.name,
@@ -24,8 +25,7 @@ fun PetRescueNavigation(
             composable(route=Screen.Home.name){
                 Home(
                     uistate = uistate,
-                    onSwitchClick = { isDarkTheme = !isDarkTheme
-                    },
+                    onSwitchClick = onThemeChange,
 
                     onPetClick ={ selectedId->
 
@@ -34,7 +34,6 @@ fun PetRescueNavigation(
                     onInfiniteScrollingChange = {
                         viewModel.onInfiniteScrollChange(it)
                     }
-
 
                 )
             }
