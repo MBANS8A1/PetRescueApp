@@ -5,6 +5,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.petrescueapp.presentation.detail.DetailScreen
 import com.example.petrescueapp.presentation.home.Home
 import com.example.petrescueapp.presentation.viewmodels.MainViewModel
 import com.example.petrescueapp.presentation.viewmodels.Uistate
@@ -39,9 +40,12 @@ fun PetRescueNavigation(
                 )
             }
             composable(route=Screen.Detail.name){
-
+                DetailScreen(
+                    pet = viewModel.uiState.animals.data?.get(id)!!
+                ) {
+                    currentScreen = Screen.Home
+                }
             }
-
     }
 }
 

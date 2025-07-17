@@ -48,13 +48,8 @@ class MainActivity : ComponentActivity() {
 
                         }
                         Screen.Detail->{
-                            DetailScreen(
-                                pet = viewModel.uiState.animals.data?.get(id)!!
-                            ) {
-                                currentScreen = Screen.Home
-                            }
-                        }
 
+                        }
                     }
                 }
             }
