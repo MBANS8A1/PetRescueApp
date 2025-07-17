@@ -33,7 +33,7 @@ fun PetRescueNavigation(
                     onSwitchClick = onThemeChange,
 
                     onPetClick ={ selectedId->
-
+                        navController.navigate(Screen.Detail.name)
                     } ,
                     onLoadNextPage = onLoadNextPage,
                     onInfiniteScrollingChange = onInfiniteScrollChange
@@ -43,6 +43,7 @@ fun PetRescueNavigation(
                 DetailScreen(
                     pet = uistate.animals.data?.get(0)!!
                 ) {
+                    navController.navigate(Screen.Home.name)
                 }
             }
     }
