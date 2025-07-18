@@ -3,8 +3,10 @@ package com.example.petrescueapp.presentation.navigation
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.example.petrescueapp.presentation.detail.DetailScreen
 import com.example.petrescueapp.presentation.home.Home
 import com.example.petrescueapp.presentation.viewmodels.MainViewModel
@@ -39,8 +41,10 @@ fun PetRescueNavigation(
                     onInfiniteScrollingChange = onInfiniteScrollChange
                 )
             }
-            composable(route="${Screen.Detail.name}/{id}"){
-                DetailScreen(
+            composable(route="${Screen.Detail.name}/{id}",
+                    arguments = listOf(navArgument("id"){type = NavType.IntType})
+                ){
+                    DetailScreen(
                     pet = uistate.animals.data?.get(0)!!
                 ) {
                     navController.navigate(Screen.Home.name)
