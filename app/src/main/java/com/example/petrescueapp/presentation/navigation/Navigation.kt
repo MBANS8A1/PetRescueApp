@@ -33,13 +33,13 @@ fun PetRescueNavigation(
                     onSwitchClick = onThemeChange,
 
                     onPetClick ={ selectedId->
-                        navController.navigate(Screen.Detail.name)
+                        navController.navigate("${Screen.Detail.name}/$selectedId")
                     } ,
                     onLoadNextPage = onLoadNextPage,
                     onInfiniteScrollingChange = onInfiniteScrollChange
                 )
             }
-            composable(route=Screen.Detail.name){
+            composable(route="${Screen.Detail.name}/{id}"){
                 DetailScreen(
                     pet = uistate.animals.data?.get(0)!!
                 ) {
