@@ -43,9 +43,10 @@ fun PetRescueNavigation(
             }
             composable(route="${Screen.Detail.name}/{id}",
                     arguments = listOf(navArgument("id"){type = NavType.IntType})
-                ){
+                ){ backStackEntry ->
+                    val id = backStackEntry.arguments!!.getInt("id")
                     DetailScreen(
-                    pet = uistate.animals.data?.get(0)!!
+                    pet = uistate.animals.data?.get(id)!!
                 ) {
                     navController.navigate(Screen.Home.name)
                 }
