@@ -50,9 +50,13 @@ class PetApiMapperImplementation:PetApiMapper<List<Pet>,ApiAnimals> {
         )
     }
 
+    val dot1: (Int) -> String = {hexCode->
+       String(Character.toChars(hexCode))
+    }
+
     private fun formatAddress(address: Address?):String{
         //a period/full stop to help separate the address components
-        val dot = "u25CF"
+        val dot = dot1(0x25CF)
         if(address != null){
             return "${address.city}$dot${address.country}"
         }
