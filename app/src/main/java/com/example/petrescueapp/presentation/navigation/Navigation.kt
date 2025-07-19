@@ -1,5 +1,8 @@
 package com.example.petrescueapp.presentation.navigation
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
@@ -52,6 +55,18 @@ fun PetRescueNavigation(
 
                 }
             }
+    }
+}
+
+private fun openUrl(
+    context:Context,
+    url:String
+){
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+    try {
+
+    }catch (e:Exception){
+        e.printStackTrace()
     }
 }
 
