@@ -48,9 +48,8 @@ fun PetRescueNavigation(
                     DetailScreen(
                     pet = uistate.animals.data?.get(id)!!
                 ) {
-                    navController.navigate(Screen.Home.name){
-                        popUpTo(route =Screen.Home.name){inclusive = true}
-                    }
+                   navController.navigateUp()
+
                 }
             }
     }
