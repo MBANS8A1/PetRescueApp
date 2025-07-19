@@ -9,6 +9,7 @@ data class Pet(
     val description:String,
     val distance: String,
     val gender:String,
+    val url:String,
     val name:String,
     val photos:List<PetPhoto>,
     val size:String,

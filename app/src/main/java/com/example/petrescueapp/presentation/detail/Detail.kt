@@ -44,7 +44,7 @@ import com.example.petrescueapp.presentation.components.PetInfoItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailScreen(pet: Pet, onNavigate:()->Unit) {
+fun DetailScreen(pet: Pet, onPetBtnClick: () -> Unit, onNavigate:()->Unit) {
     Scaffold(
         topBar = {
             //non-custom topBar so using TopAppBar
@@ -119,7 +119,7 @@ fun DetailScreen(pet: Pet, onNavigate:()->Unit) {
              //owner information was here (pet.owner) but we do not have it anymore
             item{
                 PetButton {
-
+                     onPetBtnClick.invoke()
                 }
             }
         }

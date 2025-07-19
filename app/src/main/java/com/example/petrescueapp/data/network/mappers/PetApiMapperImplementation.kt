@@ -25,6 +25,7 @@ class PetApiMapperImplementation:PetApiMapper<List<Pet>,ApiAnimals> {
                     description = formatData(description),
                     distance = formatData(distance?.toString()),
                     gender = formatData(gender),
+                    url = formatData(url),
                     name = formatData(name),
                     photos = formatPhotos(photos),
                     size = formatData(size),

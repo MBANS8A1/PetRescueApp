@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -48,8 +49,17 @@ fun PetRescueNavigation(
                     arguments = listOf(navArgument("id"){type = NavType.IntType})
                 ){ backStackEntry ->
                     val id = backStackEntry.arguments!!.getInt("id")
+                    val selectedPet = uistate.animals.data?.get(id)!!
+                    val context =  LocalContext.current
                     DetailScreen(
-                    pet = uistate.animals.data?.get(id)!!
+                        pet = selectedPet,
+                        onPetBtnClick = {
+                            openUrl(
+                                context = context,
+                                url = selectedPet.url
+
+                            )
+                        }
                 ) {
                    navController.navigateUp()
 
@@ -64,7 +74,7 @@ private fun openUrl(
 ){
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
     try {
-
+        context.startActivity(intent)
     }catch (e:Exception){
         e.printStackTrace()
     }
