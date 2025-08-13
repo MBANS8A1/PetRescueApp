@@ -90,5 +90,9 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
     implementation ("androidx.lifecycle:lifecycle-common-java8:2.6.1")
     //coil
-    implementation("io.coil-kt:coil-compose:2.1.0")
+    //implementation("io.coil-kt:coil-compose:2.1.0")
+    implementation("io.coil-kt.coil3:coil-compose:3.1.0")
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.3.0")
+
+
 }
