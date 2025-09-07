@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.dp
 import com.example.petrescueapp.R
 import com.example.petrescueapp.domain.models.Pet
 import com.example.petrescueapp.presentation.components.InfoCard
+import com.example.petrescueapp.presentation.components.OwnerCardInfo
 import com.example.petrescueapp.presentation.components.PetInfoItem
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -114,6 +115,9 @@ fun DetailScreen(pet: Pet, onPetBtnClick: () -> Unit, onNavigate:()->Unit) {
             item{ //pet information via information cards
                 PetInfo(pet = pet)
             }// pet information on cards
+            item{
+                OwnerCardInfo(pet)
+            }
              //owner information was here (pet.owner) but I do not have it here anymore
             item{
                 PetButton {
