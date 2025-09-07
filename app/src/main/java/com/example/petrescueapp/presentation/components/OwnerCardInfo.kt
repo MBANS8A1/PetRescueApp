@@ -37,55 +37,55 @@ import com.example.petrescueapp.presentation.model.Owner
 
 @Composable
 fun OwnerCardInfo(pet:Pet) {
-        Spacer(modifier = Modifier.height(20.dp))
-        Row(verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxSize().padding(5.dp)
+    Spacer(modifier = Modifier.height(20.dp))
+    Row(verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxSize().padding(5.dp)
 
-        ){
-            Text(text=" Pet Contact Information", fontSize = 20.sp, fontWeight = FontWeight.W600)
+    ){
+        Text(text=" Pet Contact Information", fontSize = 20.sp, fontWeight = FontWeight.W600)
 
-        }
-        Spacer(modifier = Modifier.height(8.dp))
-        Row(verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceAround,
-            modifier = Modifier.fillMaxWidth()
+    }
+    Spacer(modifier = Modifier.height(8.dp))
+    Row(verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceAround,
+        modifier = Modifier.fillMaxWidth()
 
+    ) {
+        Text(text= "${pet.contact.phone}",
+            color =  MaterialTheme.colorScheme.onSurface,
+            style = MaterialTheme.typography.labelMedium,
+            fontWeight = FontWeight.Medium,
+            fontSize = 14.sp
+        )
+        // Spacer(modifier = Modifier.width(10.dp))
+        Text(text= pet.contact.email,
+            color =  MaterialTheme.colorScheme.onSurface,
+            style = MaterialTheme.typography.labelMedium,
+            fontWeight = FontWeight.Medium,
+            fontSize = 14.sp
+        )
+        //Spacer(modifier = Modifier.width(10.dp))
+        Surface(
+            modifier = Modifier
+                .size(40.dp)
+                .clickable{
+                }.
+                clip(CircleShape),
+            shape = CircleShape,
+            color = MaterialTheme.colorScheme.primary,
+            contentColor = MaterialTheme.colorScheme.onPrimary
         ) {
-            Text(text= "${pet.contact.phone}",
-                 color =  MaterialTheme.colorScheme.onSurface,
-                 style = MaterialTheme.typography.labelMedium,
-                 fontWeight = FontWeight.Medium,
-                 fontSize = 14.sp
-            )
-           // Spacer(modifier = Modifier.width(10.dp))
-            Text(text= pet.contact.email,
-                color =  MaterialTheme.colorScheme.onSurface,
-                style = MaterialTheme.typography.labelMedium,
-                fontWeight = FontWeight.Medium,
-                fontSize = 14.sp
+            Box(contentAlignment = Alignment.Center,
+                modifier = Modifier.size(20.dp)){
+                Icon(painter = painterResource(id= R.drawable.ic_messenger),
+                    contentDescription = null,
+                    tint = Color.White
                 )
-            //Spacer(modifier = Modifier.width(10.dp))
-            Surface(
-                    modifier = Modifier
-                        .size(40.dp)
-                        .clickable{
-                        }.
-                        clip(CircleShape),
-                    shape = CircleShape,
-                    color = MaterialTheme.colorScheme.primary,
-                    contentColor = MaterialTheme.colorScheme.onPrimary
-                ) {
-                    Box(contentAlignment = Alignment.Center,
-                        modifier = Modifier.size(20.dp)){
-                        Icon(painter = painterResource(id= R.drawable.ic_messenger),
-                            contentDescription = null,
-                            tint = Color.White
-                        )
 
-                    }
-                }
+            }
         }
+    }
 }
 
 
@@ -146,4 +146,5 @@ fun OwnerCardInfo(pet:Pet) {
 //        }
 //    }
 //}
+
 
