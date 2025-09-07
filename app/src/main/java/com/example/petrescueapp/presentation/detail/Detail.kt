@@ -117,8 +117,7 @@ fun DetailScreen(pet: Pet, onPetBtnClick: () -> Unit, onNavigate:()->Unit) {
             }// pet information on cards
             item{
                 OwnerCardInfo(pet)
-            }
-             //owner information was here (pet.owner) but I do not have it here anymore
+            } //pet contact information
             item{
                 PetButton {
                      onPetBtnClick.invoke()
