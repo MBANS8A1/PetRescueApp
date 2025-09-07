@@ -10,8 +10,22 @@
 
    * Here you will see the list of pets with their images load on the screen. You can change the colour theme to dark theme (and vice-versa back to light theme) if you wish by clicking the lightbulb icon.
 
-     //Image of Homescreen
+     //Image of Home screen
 
    * When you scroll to the bottom of the screen you can click the "Load More Pets" button, which will load in the next series of pets from the PetFinder Web API that you can scroll down to view.
 
      //Image of "Load More Pets" button
+
+
+   2. Detail Screen
+
+   * On this page you will see a larger full width image of the pet along with some relevant traits (e.g. age, colour and breed), description story (if there is one) and contact information left by the owner(s) of the pet. At the bottom will be an "Adopt Me" button you can click that will take you to the PetFinder page for the pet.
+
+     //Image of the Detail screen
+
+
+   3. PetFinder page for selected pet
+
+   * Here you can see more details about the pet, which are recommended to review before you commit to pet adoption. You can see its health status (e.g. if its vacaccinations are up-to-date), personality and clickable icons to send an email or call the owners. Also, at the top are more images of the pet you can view.
+
+     //Image of PetFinder page for the selected pet.
