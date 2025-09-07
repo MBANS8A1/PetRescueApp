@@ -28,7 +28,7 @@ fun TopBar(onSwitchToggle: () -> Unit) {
         horizontalArrangement = Arrangement.SpaceBetween
     ){
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(text="Hi Sean,",textAlign=TextAlign.Start,
+            Text(text="Hello Adopter,",textAlign=TextAlign.Start,
                 style= MaterialTheme.typography.headlineMedium,
                 color=MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier

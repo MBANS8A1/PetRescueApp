@@ -106,15 +106,15 @@ fun DetailScreen(pet: Pet, onPetBtnClick: () -> Unit, onNavigate:()->Unit) {
                     species = pet.species,
                     status = pet.status
                 )
-            } //image and basic pet info
+            } //image and basic pet information
             item{
                 MyStoryItem(pet = pet)
 
             } //pet story and title
-            item{ //pet information via info cards
+            item{ //pet information via information cards
                 PetInfo(pet = pet)
             }// pet information on cards
-             //owner information was here (pet.owner) but we do not have it anymore
+             //owner information was here (pet.owner) but I do not have it here anymore
             item{
                 PetButton {
                      onPetBtnClick.invoke()

@@ -2,10 +2,9 @@ package com.example.petrescueapp.presentation.navigation
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
-import androidx.navigation.NavController
+import androidx.core.net.toUri
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -13,7 +12,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.petrescueapp.presentation.detail.DetailScreen
 import com.example.petrescueapp.presentation.home.Home
-import com.example.petrescueapp.presentation.viewmodels.MainViewModel
 import com.example.petrescueapp.presentation.viewmodels.Uistate
 
 enum class Screen{
@@ -29,8 +27,9 @@ fun PetRescueNavigation(
     onLoadNextPage: () -> Unit,
     onInfiniteScrollChange: (Boolean) -> Unit
 ) {
-    NavHost(navController = navController,
-           startDestination = Screen.Home.name,
+    NavHost(
+        navController = navController,
+        startDestination = Screen.Home.name,
 
         ){
             composable(route=Screen.Home.name){
@@ -72,7 +71,7 @@ private fun openUrl(
     context:Context,
     url:String
 ){
-    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+    val intent = Intent(Intent.ACTION_VIEW, url.toUri())
     try {
         context.startActivity(intent)
     }catch (e:Exception){

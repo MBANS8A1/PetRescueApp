@@ -13,6 +13,7 @@ class AccessInterceptor(
         const val TAG = "myPetRescueApp"
     }
 
+    //Build the structure of the request header with property name and value
     private fun Request.signedRequest() : Request{
        return newBuilder()
            .addHeader("Authorization","Bearer ${accessTokenProvider.token()}")

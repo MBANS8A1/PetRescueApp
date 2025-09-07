@@ -15,8 +15,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
-import com.example.petrescueapp.presentation.detail.DetailScreen
-import com.example.petrescueapp.presentation.home.Home
 import com.example.petrescueapp.presentation.navigation.PetRescueNavigation
 import com.example.petrescueapp.presentation.ui.theme.PetRescueAppTheme
 import com.example.petrescueapp.presentation.viewmodels.MainViewModel

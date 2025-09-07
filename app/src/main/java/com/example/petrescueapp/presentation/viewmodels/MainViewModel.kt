@@ -1,7 +1,6 @@
 package com.example.petrescueapp.presentation.viewmodels
 
 import android.util.Log
-import androidx.annotation.MainThread
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -29,8 +28,8 @@ class MainViewModel(
         onRequest = { page ->
             if(uiState.isFetchingPet)
                 return@PetPaginatorImplementation ResourceHolder.Loading()
-             val pet = fetchAnimals(page)
-             pet
+             val pets = fetchAnimals(page)
+             pets
         },
         getNextPage = {result ->
             getPage(result.data)

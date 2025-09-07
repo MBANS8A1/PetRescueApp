@@ -11,7 +11,7 @@ class AccessTokenAuthorization(
 ):Authenticator {
     private val Response.retryCount:Int
         get() {
-            //initially currentResponse will be null
+            //initially currentResponse will be null as not started by a retry
             var currentResponse = priorResponse
             var result = 0
             while(currentResponse != null){
