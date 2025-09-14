@@ -16,12 +16,15 @@
 
    * Here you will see the list of pets with their images loaded on the screen. You can change the colour theme to dark theme (and vice-versa back to light theme) if you wish by clicking the lightbulb icon.
 
-     //Image of Home screen
+   <img src="https://github.com/MBANS8A1/PetRescueApp/blob/ec4e91d83cca41af1bddb5e33b8156de4e456a42/app/src/main/res/drawable/petrescue_image1.png" alt="Home screen (light)" width ="250" height="490" >
+
+   <img src="https://github.com/MBANS8A1/PetRescueApp/blob/ec4e91d83cca41af1bddb5e33b8156de4e456a42/app/src/main/res/drawable/petrescue_image2.png" alt="Home screen (light)" width ="250" height="490" >
+
+   <img src="https://github.com/MBANS8A1/PetRescueApp/blob/ec4e91d83cca41af1bddb5e33b8156de4e456a42/app/src/main/res/drawable/petrescue_image3.png" alt="Home screen with pictures" width ="250" height="490" >
 
    * When you scroll to the bottom of the screen you can click the "Load More Pets" button, which will load in the next list of pets from the PetFinder Web API that you can scroll down to view.
 
-     //Image of "Load More Pets" button
-
+   <img src="https://github.com/MBANS8A1/PetRescueApp/blob/ec4e91d83cca41af1bddb5e33b8156de4e456a42/app/src/main/res/drawable/petrescue_image4.png" alt="Home screen (light)" width ="250" height="490" >
 
    2. Detail Screen
 
