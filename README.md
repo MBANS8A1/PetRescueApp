@@ -38,4 +38,10 @@
 
    * Here you can see more details about the pet, which are recommended to review before you commit to pet adoption. You can see its health status (e.g. if its vaccinations are up-to-date), personality and clickable icons to send an email or call the owner(s). Also, at the top are more images of the pet you can view.
 
-     //Image of PetFinder page for the selected pet.
+   <img src="https://github.com/MBANS8A1/PetRescueApp/blob/ec4e91d83cca41af1bddb5e33b8156de4e456a42/app/src/main/res/drawable/petrescue_image7.png" alt="PetFinder screen 1" width ="250" height="490" >
+
+   <img src="https://github.com/MBANS8A1/PetRescueApp/blob/ec4e91d83cca41af1bddb5e33b8156de4e456a42/app/src/main/res/drawable/petrescue_image8.png" alt="PetFinder screen 2" width ="250" height="490" >
+
+
+
+   
