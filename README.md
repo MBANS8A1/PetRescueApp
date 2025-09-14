@@ -30,8 +30,9 @@
 
    * On this page you will see a larger full width image of the pet along with some relevant traits (e.g. age, colour and breed), description story (if there is one) and contact information left by the owner(s) of the pet. At the bottom will be an "Adopt Me" button you can click that will take you to the PetFinder page for the pet.
 
-     //Image of the Detail screen
+   <img src="https://github.com/MBANS8A1/PetRescueApp/blob/ec4e91d83cca41af1bddb5e33b8156de4e456a42/app/src/main/res/drawable/petrescue_image5.png" alt="Detail screen 1" width ="250" height="490" >
 
+   <img src="https://github.com/MBANS8A1/PetRescueApp/blob/ec4e91d83cca41af1bddb5e33b8156de4e456a42/app/src/main/res/drawable/petrescue_image6.png" alt="Detail screen 2" width ="250" height="490" >
 
    3. PetFinder page for selected pet
 
